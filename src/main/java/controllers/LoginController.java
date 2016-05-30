@@ -5,6 +5,7 @@ package controllers;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import screensframework.ScreensController;
 import com.mycompany.proyectocolegio.MainApp;
 import java.net.URL;
 import java.util.ResourceBundle;

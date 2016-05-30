@@ -38,7 +38,7 @@
  * holder.
  */ 
 
-package controllers;
+package screensframework;
 
 import java.util.HashMap;
 import javafx.animation.KeyFrame;

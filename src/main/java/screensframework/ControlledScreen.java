@@ -39,8 +39,6 @@
  */ 
 package screensframework;
 
-import controllers.ScreensController;
-
 /**
  *
  * @author Angie
