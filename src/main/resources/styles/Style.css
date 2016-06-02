@@ -1,0 +1,34 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 01/06/2016, 09:06:27
+    Author     : alumno
+*/
+
+#AnchorPane {
+    -fx-background-color: linear-gradient(to bottom,#ebeffa,whitesmoke);
+    -fx-background-image: url('../imagenes/Sin-nombre.png'); 
+    
+}
+
+.button{
+    
+    -fx-background-color: linear-gradient(to bottom,white,cornflowerblue);
+    
+}
+
+.button:hover{
+    
+    
+}
+
+.button:pressed{
+    -fx-background-color: linear-gradient(to bottom,white,blueviolet);
+}
+
+.label{
+/*    -fx-text-fill: white;*/
+}

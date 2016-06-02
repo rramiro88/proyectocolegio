@@ -11,21 +11,24 @@ import javafx.stage.Stage;
 
 public class MainApp extends Application {
     
-    public static String screen1ID = "main";
-    public static String screen1File = "/fxml/Login.fxml";
-    public static String screen2ID = "screen2";
-    public static String screen2File = "/fxml/Escritorio.fxml";
-    public static String screen3ID = "screen3";
-    public static String screen3File = "Screen3.fxml";
-
+    public static String pantallaPrincipal = "main";
+    public static String mainArchivoFXML = "/fxml/Login.fxml";
+    public static String escritorio = "escritorio";
+    public static String escritorioArchivoFXML = "/fxml/Escritorio.fxml";
+    public static String nuevoAlumno = "nuevoalumno";
+    public static String nuevoAlumnoArchivoFXML = "/fxml/NuevoAlumno.fxml";
+    public static String buscarAlumno = "buscaralumno";
+    public static String buscarAlumnoArchivoFXML = "/fxml/BuscarAlumno.fxml";
+    
     @Override
     public void start(Stage stage) throws Exception {
        ScreensController mainContainer = new ScreensController();
-        mainContainer.loadScreen(screen1ID, screen1File);
-        mainContainer.loadScreen(screen2ID, screen2File);
-        mainContainer.loadScreen(screen3ID, screen3File);
+        mainContainer.loadScreen(pantallaPrincipal, mainArchivoFXML);
+        mainContainer.loadScreen(escritorio, escritorioArchivoFXML);
+        mainContainer.loadScreen(nuevoAlumno, nuevoAlumnoArchivoFXML);
+        mainContainer.loadScreen(buscarAlumno, buscarAlumnoArchivoFXML);
         
-        mainContainer.setScreen(screen1ID);
+        mainContainer.setScreen(pantallaPrincipal);
         
         Group root = new Group();
         root.getChildren().addAll(mainContainer);

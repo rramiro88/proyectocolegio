@@ -6,6 +6,7 @@ package controllers;
  * and open the template in the editor.
  */
 
+import com.mycompany.proyectocolegio.MainApp;
 import screensframework.ScreensController;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -55,7 +56,7 @@ public class EscritorioController implements Initializable, ControlledScreen{
     @FXML
     private void nuevoAlumno(MouseEvent event) {
         
-        System.out.println("Nuevo Alumno");
+        myController.setScreen(MainApp.nuevoAlumno);
     }
 
     @FXML
@@ -70,7 +71,7 @@ public class EscritorioController implements Initializable, ControlledScreen{
 
     @FXML
     private void modificarAlumno(MouseEvent event) {
-        System.out.println("Modificar Alumno");
+        myController.setScreen(MainApp.buscarAlumno);
     }
 
     

@@ -1,49 +1,45 @@
-package controllers;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import screensframework.ScreensController;
+package controllers;
+
 import com.mycompany.proyectocolegio.MainApp;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+import screensframework.ScreensController;
 
 /**
  * FXML Controller class
  *
- * @author ramiro
+ * @author alumno
  */
-public class LoginController implements Initializable, screensframework.ControlledScreen {
-
+public class NuevoAlumnoController implements Initializable, screensframework.ControlledScreen {
+    
     ScreensController myController;
-
-    @FXML
-    private Button botonIniciarSesion;
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }
+    }    
 
-    @FXML
-    private void iniciarSesion(ActionEvent event) {
-
-        myController.setScreen(MainApp.escritorio);
-
-    }
-
-    @Override
+     @Override
     public void setScreenParent(ScreensController screenParent) {
         myController = screenParent;
     }
 
+    @FXML
+    private void volverAlInicio(ActionEvent event) {
+        myController.setScreen(MainApp.escritorio);
+    }
+    
 }
