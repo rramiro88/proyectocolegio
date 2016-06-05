@@ -49,14 +49,18 @@ public class BuscarAlumnoController implements Initializable, screensframework.C
 
         
         Alumno a = new Alumno();
-        a.setNombre("Ramiro");
+        a.setNombreYApellido("Ramiro Alarcon");
         
         Alumno b = new Alumno();
-        b.setNombre("Alumno dos");
+        b.setNombreYApellido("Radame Falcao");
         
         data = FXCollections.observableArrayList(a,b);
-
-        columnaNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        
+        
+        //Acá se coloca el nombre del campo de la entidad que se quiere mostrar en la tabla.
+        columnaNombre.setCellValueFactory(new PropertyValueFactory<>("nombreYApellido"));
+        
+        //se indica a la tabla que datos mostrar.
         tablaAlumnos.setItems(data);
 
     }

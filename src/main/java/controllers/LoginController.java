@@ -13,6 +13,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
+import sun.awt.X11.Screen;
 
 /**
  * FXML Controller class
@@ -31,7 +33,10 @@ public class LoginController implements Initializable, screensframework.Controll
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+              
+        
+        
+        
     }
 
     @FXML

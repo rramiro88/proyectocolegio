@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" stylesheets="@../styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.BuscarAlumnoController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" stylesheets="@../styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.BuscarAlumnoController">
    <children>
       <TableView fx:id="tablaAlumnos" layoutX="103.0" layoutY="274.0" opacity="0.73" prefHeight="326.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="274.0">
         <columns>
@@ -19,19 +19,19 @@
           <TableColumn fx:id="columnaAccion" prefWidth="363.0" text="Accion" />
         </columns>
       </TableView>
-      <TextField fx:id="nombreAlumno" layoutX="352.0" layoutY="34.0" opacity="0.7" prefHeight="43.0" prefWidth="236.0" />
-      <TextField fx:id="idAlumno" layoutX="352.0" layoutY="113.0" opacity="0.7" prefHeight="43.0" prefWidth="236.0" />
-      <Label layoutX="221.0" layoutY="39.0" prefHeight="32.0" prefWidth="108.0" text="Nombre">
+      <TextField fx:id="nombreAlumno" layoutX="448.0" layoutY="40.0" opacity="0.7" prefHeight="43.0" prefWidth="236.0" />
+      <TextField fx:id="idAlumno" layoutX="448.0" layoutY="119.0" opacity="0.7" prefHeight="43.0" prefWidth="236.0" />
+      <Label layoutX="317.0" layoutY="45.0" prefHeight="32.0" prefWidth="108.0" text="Nombre">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="260.0" layoutY="113.0" prefHeight="43.0" prefWidth="69.0" text="Id">
+      <Label layoutX="356.0" layoutY="119.0" prefHeight="43.0" prefWidth="69.0" text="Id">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="142.0" layoutY="191.0" mnemonicParsing="false" onAction="#buscarAlumnos" prefHeight="43.0" prefWidth="236.0" text="Buscar" />
-      <Button layoutX="454.0" layoutY="191.0" mnemonicParsing="false" onAction="#volverAlInicio" prefHeight="43.0" prefWidth="236.0" text="Cancelar" />
+      <Button layoutX="238.0" layoutY="197.0" mnemonicParsing="false" onAction="#buscarAlumnos" prefHeight="43.0" prefWidth="236.0" text="Buscar" />
+      <Button layoutX="550.0" layoutY="197.0" mnemonicParsing="false" onAction="#volverAlInicio" prefHeight="43.0" prefWidth="236.0" text="Cancelar" />
    </children>
 </AnchorPane>

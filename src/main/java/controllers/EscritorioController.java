@@ -12,6 +12,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -33,6 +34,10 @@ public class EscritorioController implements Initializable, ControlledScreen{
     private ImageView imagenImprimirRecibo;
     @FXML
     private ImageView imagenMopdificarAlumno;
+    @FXML
+    private TabPane AnchorPane;
+    @FXML
+    private ImageView imagenSalir;
 
     /**
      * Initializes the controller class.
@@ -44,7 +49,7 @@ public class EscritorioController implements Initializable, ControlledScreen{
         Tooltip.install(imagenImprimirRecibo, new Tooltip("Imprimir un recibo"));
         Tooltip.install(imagenPagarCuota, new Tooltip("Pagar una cuota"));
         Tooltip.install(imagenMopdificarAlumno, new Tooltip("Modificar los datos de un alumno"));
-        
+        Tooltip.install(imagenSalir, new Tooltip("Salir de la aplicacion"));
         
     }    
 
@@ -72,6 +77,12 @@ public class EscritorioController implements Initializable, ControlledScreen{
     @FXML
     private void modificarAlumno(MouseEvent event) {
         myController.setScreen(MainApp.buscarAlumno);
+    }
+
+    @FXML
+    private void salir(MouseEvent event) {
+
+        javafx.application.Platform.exit();
     }
 
     

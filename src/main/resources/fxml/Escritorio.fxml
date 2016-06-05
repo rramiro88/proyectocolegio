@@ -12,7 +12,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EscritorioController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EscritorioController">
    <children>
       <TabPane fx:id="AnchorPane" layoutX="241.0" layoutY="28.0" prefHeight="600.0" prefWidth="800.0" stylesheets="@../styles/Style.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
@@ -20,12 +20,12 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="125.0" layoutY="328.0" text="Nuevo alumno">
+                        <Label layoutX="131.0" layoutY="407.0" text="Nuevo alumno">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <ImageView fx:id="imagenPagarCuota" fitHeight="64.0" fitWidth="71.0" layoutX="279.0" layoutY="184.0" onMouseClicked="#pagarCuota" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imagenPagarCuota" fitHeight="64.0" fitWidth="71.0" layoutX="347.0" layoutY="263.0" onMouseClicked="#pagarCuota" pickOnBounds="true" preserveRatio="true">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -36,17 +36,17 @@
                               <Image url="@../imagenes/success.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="265.0" layoutY="328.0" text="Pagar Cuota">
+                        <Label layoutX="333.0" layoutY="407.0" text="Pagar Cuota">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <Label layoutX="382.0" layoutY="328.0" text="Imprimir Recibo">
+                        <Label layoutX="526.0" layoutY="407.0" text="Imprimir Recibo">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <ImageView fx:id="imagenImprimirRecibo" fitHeight="64.0" fitWidth="71.0" layoutX="410.0" layoutY="184.0" onMouseClicked="#imprimirRecibo" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imagenImprimirRecibo" fitHeight="64.0" fitWidth="71.0" layoutX="554.0" layoutY="263.0" onMouseClicked="#imprimirRecibo" pickOnBounds="true" preserveRatio="true">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -57,7 +57,7 @@
                               <Image url="@../imagenes/file-1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="imagenMopdificarAlumno" fitHeight="64.0" fitWidth="71.0" layoutX="558.0" layoutY="184.0" onMouseClicked="#modificarAlumno" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imagenMopdificarAlumno" fitHeight="64.0" fitWidth="71.0" layoutX="763.0" layoutY="263.0" onMouseClicked="#modificarAlumno" pickOnBounds="true" preserveRatio="true">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -68,12 +68,12 @@
                               <Image url="@../imagenes/user-3.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="525.0" layoutY="328.0" text="Modificar alumno">
+                        <Label layoutX="730.0" layoutY="407.0" text="Modificar alumno">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <ImageView fx:id="imagenNuevoAlumno" fitHeight="64.0" fitWidth="71.0" layoutX="148.0" layoutY="184.0" onMouseClicked="#nuevoAlumno" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imagenNuevoAlumno" fitHeight="64.0" fitWidth="71.0" layoutX="154.0" layoutY="263.0" onMouseClicked="#nuevoAlumno" pickOnBounds="true" preserveRatio="true">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -83,6 +83,14 @@
                            <image>
                               <Image url="@../imagenes/users-1.png" />
                            </image>
+                        </ImageView>
+                        <ImageView fx:id="imagenSalir" fitHeight="64.0" fitWidth="53.0" layoutX="939.0" layoutY="661.0" onMouseClicked="#salir" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/close.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </ImageView>
                      </children>
                      <effect>
