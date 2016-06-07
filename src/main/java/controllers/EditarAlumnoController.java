@@ -29,7 +29,7 @@ import screensframework.ScreensController;
  *
  * @author alumno
  */
-public class NuevoAlumnoController implements Initializable, screensframework.ControlledScreen {
+public class EditarAlumnoController implements Initializable, screensframework.ControlledScreen {
 
     ScreensController myController;
 
@@ -58,7 +58,14 @@ public class NuevoAlumnoController implements Initializable, screensframework.Co
         tg = new ToggleGroup();
         radioManana.setToggleGroup(tg);
         radioTarde.setToggleGroup(tg);
-        radioManana.setSelected(true);
+        
+//        if(MainApp.alumnoAEditar.getTurno().equals("Tarde")){
+//            radioTarde.setSelected(true);
+//        }else{
+//            radioManana.setSelected(true);
+//        }
+        
+        
 
         //seteo de comboBoxes
         ObservableList<String> niveles
@@ -78,7 +85,7 @@ public class NuevoAlumnoController implements Initializable, screensframework.Co
                 );
 
         comboNivel.setItems(niveles);
-        comboNivel.setValue("1° Grado");
+//        comboNivel.setValue(MainApp.alumnoAEditar.getNivel());
 
         ObservableList<String> divisiones
                 = FXCollections.observableArrayList(
@@ -88,7 +95,14 @@ public class NuevoAlumnoController implements Initializable, screensframework.Co
                         "B"
                 );
         comboDivision.setItems(divisiones);
-        comboDivision.setValue("Rojo");
+//        comboDivision.setValue(MainApp.alumnoAEditar.getDivision());
+        
+        
+//        textoNombreYApellido.setText(MainApp.alumnoAEditar.getNombreYApellido()); 
+//        
+//        
+//        System.out.println(MainApp.alumnoAEditar.getNombreYApellido() + " - " +MainApp.alumnoAEditar.getTurno());
+        
     }
 
     @Override
@@ -98,21 +112,23 @@ public class NuevoAlumnoController implements Initializable, screensframework.Co
 
     @FXML
     private void volverAlInicio(ActionEvent event) {
-        myController.setScreen(MainApp.escritorio);
+        myController.setScreen(MainApp.buscarAlumno);
     }
 
-    @FXML
-    private void crearAlumno(ActionEvent event) {
-        DAOGeneral dao = new DAOGeneral();
 
-        Alumno alumnoACrear = new Alumno();
-        alumnoACrear.setDivision(comboDivision.getValue());
-        alumnoACrear.setNivel(comboNivel.getValue());
+    @FXML
+    private void actualizarAlumno(ActionEvent event) {
+        
+         DAOGeneral dao = new DAOGeneral();
+
+        Alumno alumnoAActualizar = new Alumno();
+        alumnoAActualizar.setDivision(comboDivision.getValue());
+        alumnoAActualizar.setNivel(comboNivel.getValue());
 
         if (radioManana.isSelected()) {
-            alumnoACrear.setTurno("Mañana");
+            alumnoAActualizar.setTurno("Mañana");
         } else {
-            alumnoACrear.setTurno("Tarde");
+            alumnoAActualizar.setTurno("Tarde");
         }
 
         if ("".equals(textoNombreYApellido.getText().trim())) {
@@ -124,24 +140,24 @@ public class NuevoAlumnoController implements Initializable, screensframework.Co
             Optional<String> result = dialog.showAndWait();
             if (result.isPresent()) {
                 textoNombreYApellido.setText(result.get());
-                alumnoACrear.setNombreYApellido(textoNombreYApellido.getText());
+                alumnoAActualizar.setNombreYApellido(textoNombreYApellido.getText());
             }
 
         } else {
 
-            alumnoACrear.setNombreYApellido(textoNombreYApellido.getText());
+            alumnoAActualizar.setNombreYApellido(textoNombreYApellido.getText());
 
-            if (dao.guardarAlumno(alumnoACrear)) {
+            if (dao.actualizarAlumno(alumnoAActualizar)) {
 
                 Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
                 dialogo.setHeaderText("Informacion");
-                dialogo.setContentText("Alumno creado con exito");
+                dialogo.setContentText("Se modificó correctamente el alumno");
                 dialogo.show();
 
             }
 
         }
-
+        
     }
 
 }

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" stylesheets="@../styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NuevoAlumnoController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" stylesheets="@../styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditarAlumnoController">
    <children>
       <Label layoutX="233.0" layoutY="174.0" prefHeight="34.0" prefWidth="161.0" text="Nombre y Apellido">
          <font>
@@ -33,7 +33,7 @@
       </Label>
       <RadioButton fx:id="radioManana" layoutX="456.0" layoutY="418.0" mnemonicParsing="false" text="Mañana" />
       <RadioButton fx:id="radioTarde" layoutX="604.0" layoutY="418.0" mnemonicParsing="false" text="Tarde" />
-      <Button layoutX="292.0" layoutY="538.0" mnemonicParsing="false" onAction="#crearAlumno" prefHeight="54.0" prefWidth="213.0" text="Crear Alumno">
+      <Button layoutX="292.0" layoutY="538.0" mnemonicParsing="false" onAction="#actualizarAlumno" prefHeight="54.0" prefWidth="213.0" text="Confirmar">
          <font>
             <Font size="15.0" />
          </font>

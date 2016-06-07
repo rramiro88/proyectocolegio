@@ -8,16 +8,24 @@ package controllers;
 import com.mycompany.proyectocolegio.MainApp;
 import entidades.Alumno;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import logica.Logica;
 import screensframework.ScreensController;
 
 /**
@@ -33,13 +41,17 @@ public class BuscarAlumnoController implements Initializable, screensframework.C
     @FXML
     private TableView<Alumno> tablaAlumnos;
     @FXML
-    private TextField nombreAlumno;
-    @FXML
-    private TextField idAlumno;
-    @FXML
     private TableColumn<Alumno, String> columnaNombre;
     @FXML
-    private TableColumn<Alumno, String> columnaAccion;
+    private TextField textoNombre;
+    @FXML
+    private TextField textoId;
+    @FXML
+    private TableColumn<?, ?> columnaNivel;
+    @FXML
+    private TableColumn<?, ?> columnaDivision;
+    @FXML
+    private TableColumn<?, ?> columnaTurno;
 
     /**
      * Initializes the controller class.
@@ -47,18 +59,14 @@ public class BuscarAlumnoController implements Initializable, screensframework.C
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        
-        Alumno a = new Alumno();
-        a.setNombreYApellido("Ramiro Alarcon");
-        
-        Alumno b = new Alumno();
-        b.setNombreYApellido("Radame Falcao");
-        
-        data = FXCollections.observableArrayList(a,b);
+       data = FXCollections.observableArrayList();
         
         
         //Acá se coloca el nombre del campo de la entidad que se quiere mostrar en la tabla.
         columnaNombre.setCellValueFactory(new PropertyValueFactory<>("nombreYApellido"));
+        columnaDivision.setCellValueFactory(new PropertyValueFactory<>("division"));
+        columnaTurno.setCellValueFactory(new PropertyValueFactory<>("turno"));
+        columnaNivel.setCellValueFactory(new PropertyValueFactory<>("nivel"));
         
         //se indica a la tabla que datos mostrar.
         tablaAlumnos.setItems(data);
@@ -73,17 +81,53 @@ public class BuscarAlumnoController implements Initializable, screensframework.C
     @FXML
     private void buscarAlumnos(ActionEvent event) {
         
-        int indice = tablaAlumnos.getSelectionModel().getSelectedIndex();
-        //data.remove(indice);
+//        int indice = tablaAlumnos.getSelectionModel().getSelectedIndex();
+//        //data.remove(indice);
+//        
+//        
+//        System.out.println(indice);
         
         
-        System.out.println(indice);
+        data.clear();
+        
+        Logica logica = new Logica();
+        List<Alumno> resultado = logica.obtenerAlumnos(textoNombre.getText().trim(),textoId.getText().trim());
+        
+        data.addAll(resultado);
+        
+        
+        
 
     }
 
     @FXML
     private void volverAlInicio(ActionEvent event) {
+        data.clear();
         myController.setScreen(MainApp.escritorio);
+    }
+
+    @FXML
+    private void editarAlumno(MouseEvent event) {
+        
+//        columnaNombre.setCellFactory(TextFieldTableCell.<Alumno>forTableColumn());
+        
+        int indice = tablaAlumnos.getSelectionModel().getSelectedIndex();
+        
+        
+        MainApp.alumnoAEditar = data.get(indice);
+        
+        System.out.println(MainApp.alumnoAEditar.getNombreYApellido());
+        
+        
+        myController.setScreen(MainApp.editarAlumno);
+        
+     
+
+        
+    }
+
+    @FXML
+    private void eliminarAlumno(MouseEvent event) {
     }
 
 }

@@ -1,5 +1,6 @@
 package com.mycompany.proyectocolegio;
 
+import entidades.Alumno;
 import screensframework.ScreensController;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
@@ -18,6 +19,10 @@ public class MainApp extends Application {
     public static String nuevoAlumnoArchivoFXML = "/fxml/NuevoAlumno.fxml";
     public static String buscarAlumno = "buscaralumno";
     public static String buscarAlumnoArchivoFXML = "/fxml/BuscarAlumno.fxml";
+    public static String editarAlumno = "editaralumno";
+    public static String editarAlumnoArchivoFXML = "/fxml/EditarAlumno.fxml";
+    
+    public static Alumno alumnoAEditar;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -26,6 +31,7 @@ public class MainApp extends Application {
         mainContainer.loadScreen(escritorio, escritorioArchivoFXML);
         mainContainer.loadScreen(nuevoAlumno, nuevoAlumnoArchivoFXML);
         mainContainer.loadScreen(buscarAlumno, buscarAlumnoArchivoFXML);
+        mainContainer.loadScreen(editarAlumno, editarAlumnoArchivoFXML);
 
         mainContainer.setScreen(pantallaPrincipal);
 

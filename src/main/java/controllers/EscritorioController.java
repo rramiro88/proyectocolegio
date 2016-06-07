@@ -82,7 +82,7 @@ public class EscritorioController implements Initializable, ControlledScreen{
     @FXML
     private void salir(MouseEvent event) {
 
-        javafx.application.Platform.exit();
+        System.exit(0);
     }
 
     
