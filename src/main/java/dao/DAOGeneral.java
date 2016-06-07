@@ -123,6 +123,31 @@ public class DAOGeneral {
         return respuesta;
     }
 
+    public void eliminarAlumno(Alumno alumno) {
+        
+
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session s = sf.openSession();
+        s.beginTransaction();
+
+        try {
+            s.delete(alumno);
+            s.getTransaction().commit();
+
+        } catch (Exception e) {
+            
+            s.getTransaction().rollback();
+            System.out.println("ROLLBACK EN TRANSACCION");
+            e.printStackTrace();
+
+        } finally {
+            s.close();
+        }
+
+        
+    }
+    
+
    
 
 }

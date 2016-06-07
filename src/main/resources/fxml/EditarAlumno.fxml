@@ -33,17 +33,22 @@
       </Label>
       <RadioButton fx:id="radioManana" layoutX="456.0" layoutY="418.0" mnemonicParsing="false" text="Mañana" />
       <RadioButton fx:id="radioTarde" layoutX="604.0" layoutY="418.0" mnemonicParsing="false" text="Tarde" />
-      <Button layoutX="292.0" layoutY="538.0" mnemonicParsing="false" onAction="#actualizarAlumno" prefHeight="54.0" prefWidth="213.0" text="Confirmar">
+      <Button layoutX="456.0" layoutY="531.0" mnemonicParsing="false" onAction="#actualizarAlumno" prefHeight="54.0" prefWidth="213.0" text="Confirmar">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button cancelButton="true" layoutX="574.0" layoutY="538.0" mnemonicParsing="false" onAction="#volverAlInicio" prefHeight="54.0" prefWidth="213.0" text="Volver">
+      <Button cancelButton="true" layoutX="738.0" layoutY="531.0" mnemonicParsing="false" onAction="#volverAlInicio" prefHeight="54.0" prefWidth="213.0" text="Volver">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
       <ComboBox fx:id="comboNivel" layoutX="410.0" layoutY="243.0" prefHeight="42.0" prefWidth="330.0" promptText="Elija un valor" />
       <ComboBox fx:id="comboDivision" layoutX="410.0" layoutY="321.0" prefHeight="42.0" prefWidth="330.0" promptText="Elija un valor" />
+      <Button layoutX="200.0" layoutY="531.0" mnemonicParsing="false" onAction="#cargarCampos" prefHeight="54.0" prefWidth="213.0" text="Cargar Campos">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

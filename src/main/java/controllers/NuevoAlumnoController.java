@@ -63,6 +63,7 @@ public class NuevoAlumnoController implements Initializable, screensframework.Co
         //seteo de comboBoxes
         ObservableList<String> niveles
                 = FXCollections.observableArrayList(
+                        "Preescolar",
                         "1° Grado",
                         "2° Grado",
                         "3° Grado",
@@ -82,6 +83,7 @@ public class NuevoAlumnoController implements Initializable, screensframework.Co
 
         ObservableList<String> divisiones
                 = FXCollections.observableArrayList(
+                        "Unica",
                         "Rojo",
                         "Azul",
                         "A",

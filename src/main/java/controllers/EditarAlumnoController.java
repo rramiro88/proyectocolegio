@@ -6,7 +6,6 @@
 package controllers;
 
 import com.mycompany.proyectocolegio.MainApp;
-import dao.DAOGeneral;
 import entidades.Alumno;
 import java.net.URL;
 import java.util.Optional;
@@ -22,6 +21,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.ToggleGroup;
+import logica.Logica;
 import screensframework.ScreensController;
 
 /**
@@ -58,18 +58,11 @@ public class EditarAlumnoController implements Initializable, screensframework.C
         tg = new ToggleGroup();
         radioManana.setToggleGroup(tg);
         radioTarde.setToggleGroup(tg);
-        
-//        if(MainApp.alumnoAEditar.getTurno().equals("Tarde")){
-//            radioTarde.setSelected(true);
-//        }else{
-//            radioManana.setSelected(true);
-//        }
-        
-        
 
         //seteo de comboBoxes
         ObservableList<String> niveles
                 = FXCollections.observableArrayList(
+                        "Preescolar",
                         "1° Grado",
                         "2° Grado",
                         "3° Grado",
@@ -85,25 +78,24 @@ public class EditarAlumnoController implements Initializable, screensframework.C
                 );
 
         comboNivel.setItems(niveles);
-//        comboNivel.setValue(MainApp.alumnoAEditar.getNivel());
 
         ObservableList<String> divisiones
                 = FXCollections.observableArrayList(
+                        "Unica",
                         "Rojo",
                         "Azul",
                         "A",
                         "B"
                 );
         comboDivision.setItems(divisiones);
-//        comboDivision.setValue(MainApp.alumnoAEditar.getDivision());
-        
-        
-//        textoNombreYApellido.setText(MainApp.alumnoAEditar.getNombreYApellido()); 
-//        
-//        
-//        System.out.println(MainApp.alumnoAEditar.getNombreYApellido() + " - " +MainApp.alumnoAEditar.getTurno());
-        
+
+       
+
     }
+
+    
+    
+    
 
     @Override
     public void setScreenParent(ScreensController screenParent) {
@@ -115,13 +107,12 @@ public class EditarAlumnoController implements Initializable, screensframework.C
         myController.setScreen(MainApp.buscarAlumno);
     }
 
-
     @FXML
     private void actualizarAlumno(ActionEvent event) {
-        
-         DAOGeneral dao = new DAOGeneral();
 
-        Alumno alumnoAActualizar = new Alumno();
+        Logica logica = new Logica();
+
+        Alumno alumnoAActualizar = MainApp.alumnoAEditar;
         alumnoAActualizar.setDivision(comboDivision.getValue());
         alumnoAActualizar.setNivel(comboNivel.getValue());
 
@@ -147,7 +138,7 @@ public class EditarAlumnoController implements Initializable, screensframework.C
 
             alumnoAActualizar.setNombreYApellido(textoNombreYApellido.getText());
 
-            if (dao.actualizarAlumno(alumnoAActualizar)) {
+            if (logica.actualizarAlumno(alumnoAActualizar)) {
 
                 Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
                 dialogo.setHeaderText("Informacion");
@@ -157,7 +148,28 @@ public class EditarAlumnoController implements Initializable, screensframework.C
             }
 
         }
-        
+
+        MainApp.alumnoAEditar = null;
     }
+
+    @FXML
+    private void cargarCampos(ActionEvent event) {
+         if (MainApp.alumnoAEditar != null) {
+            comboNivel.setValue(MainApp.alumnoAEditar.getNivel());
+
+            if (MainApp.alumnoAEditar.getTurno().equals("Tarde")) {
+                radioTarde.setSelected(true);
+            } else {
+                radioManana.setSelected(true);
+            }
+
+            comboDivision.setValue(MainApp.alumnoAEditar.getDivision());
+
+            textoNombreYApellido.setText(MainApp.alumnoAEditar.getNombreYApellido());
+        } 
+    }
+
+
+    
 
 }

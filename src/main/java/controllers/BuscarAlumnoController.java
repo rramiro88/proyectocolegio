@@ -14,17 +14,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import logica.Logica;
 import screensframework.ScreensController;
 
@@ -47,11 +43,11 @@ public class BuscarAlumnoController implements Initializable, screensframework.C
     @FXML
     private TextField textoId;
     @FXML
-    private TableColumn<?, ?> columnaNivel;
+    private TableColumn<Alumno, String> columnaNivel;
     @FXML
-    private TableColumn<?, ?> columnaDivision;
+    private TableColumn<Alumno, String> columnaDivision;
     @FXML
-    private TableColumn<?, ?> columnaTurno;
+    private TableColumn<Alumno, String> columnaTurno;
 
     /**
      * Initializes the controller class.
@@ -59,15 +55,14 @@ public class BuscarAlumnoController implements Initializable, screensframework.C
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-       data = FXCollections.observableArrayList();
-        
-        
+        data = FXCollections.observableArrayList();
+
         //Acá se coloca el nombre del campo de la entidad que se quiere mostrar en la tabla.
         columnaNombre.setCellValueFactory(new PropertyValueFactory<>("nombreYApellido"));
         columnaDivision.setCellValueFactory(new PropertyValueFactory<>("division"));
         columnaTurno.setCellValueFactory(new PropertyValueFactory<>("turno"));
         columnaNivel.setCellValueFactory(new PropertyValueFactory<>("nivel"));
-        
+
         //se indica a la tabla que datos mostrar.
         tablaAlumnos.setItems(data);
 
@@ -80,23 +75,18 @@ public class BuscarAlumnoController implements Initializable, screensframework.C
 
     @FXML
     private void buscarAlumnos(ActionEvent event) {
-        
+
 //        int indice = tablaAlumnos.getSelectionModel().getSelectedIndex();
 //        //data.remove(indice);
 //        
 //        
 //        System.out.println(indice);
-        
-        
         data.clear();
-        
+
         Logica logica = new Logica();
-        List<Alumno> resultado = logica.obtenerAlumnos(textoNombre.getText().trim(),textoId.getText().trim());
-        
+        List<Alumno> resultado = logica.obtenerAlumnos(textoNombre.getText().trim(), textoId.getText().trim());
+
         data.addAll(resultado);
-        
-        
-        
 
     }
 
@@ -108,26 +98,32 @@ public class BuscarAlumnoController implements Initializable, screensframework.C
 
     @FXML
     private void editarAlumno(MouseEvent event) {
-        
-//        columnaNombre.setCellFactory(TextFieldTableCell.<Alumno>forTableColumn());
-        
-        int indice = tablaAlumnos.getSelectionModel().getSelectedIndex();
-        
-        
-        MainApp.alumnoAEditar = data.get(indice);
-        
-        System.out.println(MainApp.alumnoAEditar.getNombreYApellido());
-        
-        
-        myController.setScreen(MainApp.editarAlumno);
-        
-     
 
-        
+//        columnaNombre.setCellFactory(TextFieldTableCell.<Alumno>forTableColumn());
+        int indice = tablaAlumnos.getSelectionModel().getSelectedIndex();
+
+        MainApp.alumnoAEditar = data.get(indice);
+
+        System.out.println(MainApp.alumnoAEditar.getNombreYApellido());
+
+        data.clear();
+        myController.setScreen(MainApp.editarAlumno);
+
     }
 
     @FXML
     private void eliminarAlumno(MouseEvent event) {
+        int indice = tablaAlumnos.getSelectionModel().getSelectedIndex();
+        Alumno alumnoAEliminar = data.get(indice);
+        Logica logica = new Logica();
+        logica.eliminarAlumno(alumnoAEliminar);
+
+        Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
+        dialogo.setHeaderText("Informacion");
+        dialogo.setContentText("Alumno eliminado con exito");
+        dialogo.show();
+        
+        data.remove(indice);
     }
 
 }

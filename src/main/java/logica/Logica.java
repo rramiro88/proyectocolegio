@@ -43,4 +43,12 @@ public class Logica {
 
         
     }
+
+    public boolean actualizarAlumno(Alumno alumnoAActualizar) {
+        return dao.actualizarAlumno(alumnoAActualizar);
+    }
+
+    public void eliminarAlumno(Alumno alumno) {
+        dao.eliminarAlumno(alumno);
+    }
 }
