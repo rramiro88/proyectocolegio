@@ -6,8 +6,10 @@
 package dao;
 
 import entidades.Alumno;
+import entidades.Pago;
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -85,28 +87,27 @@ public class DAOGeneral {
         s.beginTransaction();
 
         try {
-            
+
             respuesta = (Alumno) s.get(Alumno.class, id);
-            
+
         } catch (Exception e) {
             System.out.println("No se pudo obtener el alumno por su ID");
-        }finally{
+        } finally {
             s.close();
         }
-
-        
 
         return respuesta;
     }
 
     public boolean actualizarAlumno(Alumno alumno) {
-       boolean respuesta = true;
+        boolean respuesta = true;
 
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session s = sf.openSession();
         s.beginTransaction();
 
         try {
+
             s.update(alumno);
             s.getTransaction().commit();
 
@@ -124,7 +125,6 @@ public class DAOGeneral {
     }
 
     public void eliminarAlumno(Alumno alumno) {
-        
 
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session s = sf.openSession();
@@ -135,7 +135,7 @@ public class DAOGeneral {
             s.getTransaction().commit();
 
         } catch (Exception e) {
-            
+
             s.getTransaction().rollback();
             System.out.println("ROLLBACK EN TRANSACCION");
             e.printStackTrace();
@@ -144,10 +144,30 @@ public class DAOGeneral {
             s.close();
         }
 
-        
     }
-    
 
-   
+    public boolean guardarPago(Pago pago) {
+        boolean respuesta = true;
+
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session s = sf.openSession();
+        s.beginTransaction();
+
+        try {
+            s.save(pago);
+            s.getTransaction().commit();
+
+        } catch (Exception e) {
+            respuesta = false;
+            s.getTransaction().rollback();
+            System.out.println("ROLLBACK EN TRANSACCION");
+            e.printStackTrace();
+
+        } finally {
+            s.close();
+        }
+
+        return respuesta;
+    }
 
 }

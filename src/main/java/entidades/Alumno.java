@@ -7,32 +7,30 @@ package entidades;
 
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-
-
 /**
  *
  * @author alumno
  */
-
 @Entity
 public class Alumno {
-    
-    
+
     private String nombreYApellido;
-    @Id 
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String nivel;
     private String division;
     private String turno;
+
+   
     
-    
-    @OneToMany(mappedBy = "alumno")
+    @OneToMany(mappedBy = "alumno",fetch = FetchType.EAGER)
     private List<Pago> pagos;
 
     public String getNombreYApellido() {
@@ -66,11 +64,18 @@ public class Alumno {
     public void setTurno(String turno) {
         this.turno = turno;
     }
-    
-    
 
+    public void agregarPago(Pago pago) {
+        pagos.add(pago);
+    }
 
+    public List<Pago> getPagos() {
+        return pagos;
+    }
 
+    public void setPagos(List<Pago> pagos) {
+        this.pagos = pagos;
+    }
 
     public int getId() {
         return id;
@@ -79,8 +84,5 @@ public class Alumno {
     public void setId(int id) {
         this.id = id;
     }
-    
-    
-    
-    
+
 }
