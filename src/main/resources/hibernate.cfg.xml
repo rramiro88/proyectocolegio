@@ -7,9 +7,10 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/colegio?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">root</property>
-    <property name="hibernate.hbm2ddl.auto">validate</property>
+    <property name="hibernate.hbm2ddl.auto">create-drop</property>
     
     <mapping class="entidades.Alumno"/>
+    <mapping class="entidades.Pago"/>
     
     
     

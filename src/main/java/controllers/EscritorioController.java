@@ -66,7 +66,7 @@ public class EscritorioController implements Initializable, ControlledScreen{
 
     @FXML
     private void pagarCuota(MouseEvent event) {
-        System.out.println("Pagar Cuota");
+        myController.setScreen(MainApp.pagarCuota);
     }
 
     @FXML
