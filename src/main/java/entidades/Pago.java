@@ -8,6 +8,8 @@ package entidades;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -25,6 +27,7 @@ public class Pago implements Serializable {
     private Alumno alumno;
     
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -32,6 +35,17 @@ public class Pago implements Serializable {
     
     private String concepto;
     private float monto;
+    private String mes;
+
+    public String getMes() {
+        return mes;
+    }
+
+    public void setMes(String mes) {
+        this.mes = mes;
+    }
+    
+    
 
     public Date getFechaDePago() {
         return fechaDePago;

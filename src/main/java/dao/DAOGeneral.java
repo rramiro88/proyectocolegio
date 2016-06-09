@@ -108,7 +108,7 @@ public class DAOGeneral {
 
         try {
 
-            s.update(alumno);
+            s.merge(alumno);
             s.getTransaction().commit();
 
         } catch (Exception e) {

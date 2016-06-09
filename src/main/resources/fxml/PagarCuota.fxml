@@ -24,7 +24,8 @@
                       <TableColumn fx:id="columnaNombre" prefWidth="252.0" text="Nombre" />
                       <TableColumn fx:id="columnaNivel" prefWidth="222.0" text="Nivel" />
                         <TableColumn fx:id="columnaDivision" prefWidth="302.0" text="Division" />
-                        <TableColumn fx:id="columnaTurno" prefWidth="229.0" text="Turno" />
+                        <TableColumn fx:id="columnaTurno" prefWidth="134.0" text="Turno" />
+                        <TableColumn fx:id="columnaUltimoPago" prefWidth="113.0" text="Ultimo pago" />
                     </columns>
                   </TableView>
                </content>
