@@ -74,6 +74,7 @@ public class PagarCuotaController implements Initializable, screensframework.Con
     private ImageView imagenPagar;
     @FXML
     private Label etiquetaPagar;
+    private TableColumn<?, ?> columnaUltimoPago;
 
     /**
      * Initializes the controller class.
@@ -168,6 +169,7 @@ public class PagarCuotaController implements Initializable, screensframework.Con
             pago.setConcepto(comboConcepto.getValue().trim());
             pago.setFechaDePago(Date.valueOf(LocalDate.now()));
             pago.setMonto(Integer.valueOf(textoMonto.getText().trim()));
+            pago.setMes(comboMes.getValue().trim());
 
             int indice = tablaAlumnos.getSelectionModel().getSelectedIndex();
             Alumno alumnoPagador = data.get(indice);

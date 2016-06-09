@@ -71,7 +71,7 @@ public class EscritorioController implements Initializable, ControlledScreen{
 
     @FXML
     private void imprimirRecibo(MouseEvent event) {
-        System.out.println("Imprimir Recibo");
+        myController.setScreen(MainApp.detalleCuota);
     }
 
     @FXML
