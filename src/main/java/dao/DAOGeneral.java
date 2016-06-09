@@ -9,9 +9,9 @@ import entidades.Alumno;
 import entidades.Pago;
 import java.util.List;
 import org.hibernate.Criteria;
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -28,7 +28,7 @@ public class DAOGeneral {
         s.beginTransaction();
 
         try {
-            s.save(alumno);
+            s.persist(alumno);
             s.getTransaction().commit();
 
         } catch (Exception e) {
@@ -69,7 +69,7 @@ public class DAOGeneral {
         s.beginTransaction();
 
         Criteria c = s.createCriteria(Alumno.class)
-                .add(Restrictions.like("nombreYApellido", nombre));
+                .add(Restrictions.like("nombreYApellido", nombre, MatchMode.START));
         respuesta = c.list();
 
         System.out.println("Alumnos que coinciden con la busqueda: " + respuesta.size());
@@ -108,7 +108,7 @@ public class DAOGeneral {
 
         try {
 
-            s.update(alumno);
+            s.saveOrUpdate(alumno);
             s.getTransaction().commit();
 
         } catch (Exception e) {
@@ -146,28 +146,28 @@ public class DAOGeneral {
 
     }
 
-    public boolean guardarPago(Pago pago) {
-        boolean respuesta = true;
-
-        SessionFactory sf = HibernateUtil.getSessionFactory();
-        Session s = sf.openSession();
-        s.beginTransaction();
-
-        try {
-            s.save(pago);
-            s.getTransaction().commit();
-
-        } catch (Exception e) {
-            respuesta = false;
-            s.getTransaction().rollback();
-            System.out.println("ROLLBACK EN TRANSACCION");
-            e.printStackTrace();
-
-        } finally {
-            s.close();
-        }
-
-        return respuesta;
-    }
+//    public boolean guardarPago(Pago pago) {
+//        boolean respuesta = true;
+//
+//        SessionFactory sf = HibernateUtil.getSessionFactory();
+//        Session s = sf.openSession();
+//        s.beginTransaction();
+//
+//        try {
+//            s.save(pago);
+//            s.getTransaction().commit();
+//
+//        } catch (Exception e) {
+//            respuesta = false;
+//            s.getTransaction().rollback();
+//            System.out.println("ROLLBACK EN TRANSACCION");
+//            e.printStackTrace();
+//
+//        } finally {
+//            s.close();
+//        }
+//
+//        return respuesta;
+//    }
 
 }

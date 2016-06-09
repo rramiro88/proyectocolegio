@@ -102,28 +102,34 @@ public class BuscarAlumnoController implements Initializable, screensframework.C
 //        columnaNombre.setCellFactory(TextFieldTableCell.<Alumno>forTableColumn());
         int indice = tablaAlumnos.getSelectionModel().getSelectedIndex();
 
-        MainApp.alumnoAEditar = data.get(indice);
+        if (indice > -1) {
+            MainApp.alumnoAEditar = data.get(indice);
 
-        System.out.println(MainApp.alumnoAEditar.getNombreYApellido());
+            System.out.println(MainApp.alumnoAEditar.getNombreYApellido());
 
-        data.clear();
-        myController.setScreen(MainApp.editarAlumno);
+            data.clear();
+            myController.setScreen(MainApp.editarAlumno);
+        }
 
     }
 
     @FXML
     private void eliminarAlumno(MouseEvent event) {
         int indice = tablaAlumnos.getSelectionModel().getSelectedIndex();
-        Alumno alumnoAEliminar = data.get(indice);
-        Logica logica = new Logica();
-        logica.eliminarAlumno(alumnoAEliminar);
 
-        Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
-        dialogo.setHeaderText("Informacion");
-        dialogo.setContentText("Alumno eliminado con exito");
-        dialogo.show();
-        
-        data.remove(indice);
+        if (indice > -1) {
+            Alumno alumnoAEliminar = data.get(indice);
+            Logica logica = new Logica();
+            logica.eliminarAlumno(alumnoAEliminar);
+
+            Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
+            dialogo.setHeaderText("Informacion");
+            dialogo.setContentText("Alumno eliminado con exito");
+            dialogo.show();
+
+            data.remove(indice);
+        }
+
     }
 
 }

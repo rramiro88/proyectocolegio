@@ -20,12 +20,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import logica.Logica;
 import screensframework.ScreensController;
@@ -68,6 +70,10 @@ public class PagarCuotaController implements Initializable, screensframework.Con
     private TextField textoAlumnoSeleccionado;
     @FXML
     private TextField textoMonto;
+    @FXML
+    private ImageView imagenPagar;
+    @FXML
+    private Label etiquetaPagar;
 
     /**
      * Initializes the controller class.
@@ -115,6 +121,10 @@ public class PagarCuotaController implements Initializable, screensframework.Con
         comboMes.setItems(meses);
         comboMes.setValue(meses.get(LocalDate.now().getMonthValue() - 1));
 
+        tabPagos.setDisable(true);
+        imagenPagar.setDisable(true);
+        etiquetaPagar.setDisable(true);
+
     }
 
     @Override
@@ -142,6 +152,11 @@ public class PagarCuotaController implements Initializable, screensframework.Con
     @FXML
     private void volverAlInicio(ActionEvent event) {
         data.clear();
+        tabAlumnos.setDisable(false);
+        tabPagos.setDisable(true);
+        tabPane.getSelectionModel().select(0);
+        imagenPagar.setDisable(true);
+        etiquetaPagar.setDisable(true);
         myController.setScreen(MainApp.escritorio);
     }
 
@@ -160,7 +175,7 @@ public class PagarCuotaController implements Initializable, screensframework.Con
             Logica logica = new Logica();
 
             pago.setAlumno(alumnoPagador);
-            logica.guardarPago(pago);
+            //logica.guardarPago(pago);
 
             if (alumnoPagador.getPagos().add(pago)
                     && logica.actualizarAlumno(alumnoPagador)) {
@@ -168,10 +183,20 @@ public class PagarCuotaController implements Initializable, screensframework.Con
                 dialogo.setHeaderText("Informacion");
                 dialogo.setContentText("Colaboracion registrada correctamente.");
                 dialogo.show();
+
+                tabAlumnos.setDisable(false);
+                tabPagos.setDisable(true);
+                tabPane.getSelectionModel().select(0);
+                imagenPagar.setDisable(true);
+                etiquetaPagar.setDisable(true);
+                data.clear();
+                pago = null;
+
             }
 
         } catch (Exception e) {
             System.out.println("Ocurrio un error al registrar el pago.");
+            e.printStackTrace();
         }
 
     }
@@ -179,13 +204,21 @@ public class PagarCuotaController implements Initializable, screensframework.Con
     @FXML
     private void seleccionarAlumno(MouseEvent event) {
 
+        textoAlumnoSeleccionado.setText("");
+        tabPagos.setDisable(false);
         tabPane.getSelectionModel().select(1);
+        tabAlumnos.setDisable(true);
 
         int indice = tablaAlumnos.getSelectionModel().getSelectedIndex();
 
-        Alumno alumno = data.get(indice);
+        if (indice > -1) {
+            Alumno alumno = data.get(indice);
 
-        textoAlumnoSeleccionado.setText(alumno.getNombreYApellido());
+            textoAlumnoSeleccionado.setText(alumno.getNombreYApellido());
+
+            imagenPagar.setDisable(false);
+            etiquetaPagar.setDisable(false);
+        }
 
     }
 

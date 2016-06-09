@@ -105,6 +105,7 @@ public class EditarAlumnoController implements Initializable, screensframework.C
     @FXML
     private void volverAlInicio(ActionEvent event) {
         myController.setScreen(MainApp.buscarAlumno);
+        restablecerCampos();
     }
 
     @FXML
@@ -144,6 +145,7 @@ public class EditarAlumnoController implements Initializable, screensframework.C
                 dialogo.setHeaderText("Informacion");
                 dialogo.setContentText("Se modificó correctamente el alumno");
                 dialogo.show();
+                
 
             }
 
@@ -170,6 +172,11 @@ public class EditarAlumnoController implements Initializable, screensframework.C
     }
 
 
+    private void restablecerCampos(){
+        comboDivision.setValue("Unica");
+        comboNivel.setValue("Preescolar");
+        textoNombreYApellido.setText("");
+    }
     
 
 }

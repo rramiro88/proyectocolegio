@@ -58,7 +58,7 @@ public class NuevoAlumnoController implements Initializable, screensframework.Co
         tg = new ToggleGroup();
         radioManana.setToggleGroup(tg);
         radioTarde.setToggleGroup(tg);
-        radioManana.setSelected(true);
+        
 
         //seteo de comboBoxes
         ObservableList<String> niveles
@@ -79,7 +79,7 @@ public class NuevoAlumnoController implements Initializable, screensframework.Co
                 );
 
         comboNivel.setItems(niveles);
-        comboNivel.setValue("1° Grado");
+       
 
         ObservableList<String> divisiones
                 = FXCollections.observableArrayList(
@@ -90,7 +90,9 @@ public class NuevoAlumnoController implements Initializable, screensframework.Co
                         "B"
                 );
         comboDivision.setItems(divisiones);
-        comboDivision.setValue("Rojo");
+        
+        
+        this.restablecerCampos();
     }
 
     @Override
@@ -101,6 +103,7 @@ public class NuevoAlumnoController implements Initializable, screensframework.Co
     @FXML
     private void volverAlInicio(ActionEvent event) {
         myController.setScreen(MainApp.escritorio);
+        restablecerCampos();
     }
 
     @FXML
@@ -139,11 +142,21 @@ public class NuevoAlumnoController implements Initializable, screensframework.Co
                 dialogo.setHeaderText("Informacion");
                 dialogo.setContentText("Alumno creado con exito");
                 dialogo.show();
+                
 
             }
 
         }
 
+    }
+    
+    private void restablecerCampos(){
+        
+         comboNivel.setValue("1° Grado");
+         comboDivision.setValue("Rojo");
+         textoNombreYApellido.setText("");
+         radioManana.setSelected(true);
+         
     }
 
 }

@@ -78,7 +78,7 @@
       <Button layoutX="31.0" layoutY="194.0" mnemonicParsing="false" onAction="#buscarAlumnos" prefHeight="43.0" prefWidth="236.0" text="Buscar" />
       <Button layoutX="343.0" layoutY="194.0" mnemonicParsing="false" onAction="#volverAlInicio" prefHeight="43.0" prefWidth="236.0" text="Volver" />
       <Separator layoutX="603.0" layoutY="1.0" orientation="VERTICAL" prefHeight="271.0" prefWidth="13.0" />
-      <ImageView fitHeight="81.0" fitWidth="69.0" layoutX="851.0" layoutY="147.0" onMouseClicked="#pagarCuota" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imagenPagar" fitHeight="81.0" fitWidth="69.0" layoutX="851.0" layoutY="147.0" onMouseClicked="#pagarCuota" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../imagenes/success.png" />
          </image>
@@ -89,7 +89,7 @@
             <DropShadow />
          </effect>
       </ImageView>
-      <Label layoutX="647.0" layoutY="165.0" prefHeight="32.0" prefWidth="143.0" text="Pagar Cuota">
+      <Label fx:id="etiquetaPagar" layoutX="647.0" layoutY="165.0" prefHeight="32.0" prefWidth="143.0" text="Pagar Cuota">
          <font>
             <Font size="20.0" />
          </font>

@@ -53,7 +53,7 @@ public class Logica {
         dao.eliminarAlumno(alumno);
     }
 
-    public void guardarPago(Pago pago) {
-        dao.guardarPago(pago);
-    }
+//    public void guardarPago(Pago pago) {
+//        dao.guardarPago(pago);
+//    }
 }
