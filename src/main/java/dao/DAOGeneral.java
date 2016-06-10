@@ -6,9 +6,9 @@
 package dao;
 
 import entidades.Alumno;
-import entidades.Pago;
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
@@ -51,8 +51,8 @@ public class DAOGeneral {
         Session s = sf.openSession();
         s.beginTransaction();
 
-        Criteria c = s.createCriteria(Alumno.class);
-        respuesta = c.list();
+        Query consulta = s.createQuery("From Alumno");
+        respuesta = consulta.list();
 
         System.out.println("Alumnos cargados en la base de datos: " + respuesta.size());
 
@@ -108,7 +108,7 @@ public class DAOGeneral {
 
         try {
 
-            s.merge(alumno);
+            s.saveOrUpdate(alumno);
             s.getTransaction().commit();
 
         } catch (Exception e) {

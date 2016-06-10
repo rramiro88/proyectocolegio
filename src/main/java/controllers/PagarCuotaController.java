@@ -18,6 +18,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.print.Printer;
+import javafx.print.PrinterJob;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -176,9 +179,8 @@ public class PagarCuotaController implements Initializable, screensframework.Con
 
             Logica logica = new Logica();
 
-            pago.setAlumno(alumnoPagador);
+            //pago.setAlumno(alumnoPagador);
             //logica.guardarPago(pago);
-
             if (alumnoPagador.getPagos().add(pago)
                     && logica.actualizarAlumno(alumnoPagador)) {
                 Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
@@ -186,6 +188,12 @@ public class PagarCuotaController implements Initializable, screensframework.Con
                 dialogo.setContentText("Colaboracion registrada correctamente.");
                 dialogo.show();
 
+                // ACA SE DEBERIA IMPRIMIR
+                
+//                print(tablaAlumnos);
+                
+                
+                
                 tabAlumnos.setDisable(false);
                 tabPagos.setDisable(true);
                 tabPane.getSelectionModel().select(0);
@@ -206,22 +214,33 @@ public class PagarCuotaController implements Initializable, screensframework.Con
     @FXML
     private void seleccionarAlumno(MouseEvent event) {
 
-        textoAlumnoSeleccionado.setText("");
-        tabPagos.setDisable(false);
-        tabPane.getSelectionModel().select(1);
-        tabAlumnos.setDisable(true);
-
         int indice = tablaAlumnos.getSelectionModel().getSelectedIndex();
 
         if (indice > -1) {
             Alumno alumno = data.get(indice);
 
             textoAlumnoSeleccionado.setText(alumno.getNombreYApellido());
-
+            
+            tabPagos.setDisable(false);
+            tabPane.getSelectionModel().select(1);
+            tabAlumnos.setDisable(true);
             imagenPagar.setDisable(false);
             etiquetaPagar.setDisable(false);
         }
 
     }
+    
+    
+    public void print(final Node node) {
+    Printer printer = Printer.getDefaultPrinter();
+
+    PrinterJob job = PrinterJob.createPrinterJob();
+    if (job != null) {
+        boolean success = job.printPage(node);
+        if (success) {
+            job.endJob();
+        }
+    }
+}
 
 }

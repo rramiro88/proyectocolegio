@@ -9,8 +9,8 @@
 
 <AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" stylesheets="@../styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <children>
-      <TextField layoutX="315.0" layoutY="212.0" prefHeight="57.0" prefWidth="394.0" />
-      <PasswordField layoutX="315.0" layoutY="344.0" prefHeight="57.0" prefWidth="394.0" />
+      <TextField fx:id="textoUsuario" layoutX="315.0" layoutY="212.0" prefHeight="57.0" prefWidth="394.0" />
+      <PasswordField fx:id="passUsuario" layoutX="315.0" layoutY="344.0" prefHeight="57.0" prefWidth="394.0" />
       <Button fx:id="botonIniciarSesion" layoutX="315.0" layoutY="455.0" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="57.0" prefWidth="394.0" text="Iniciar Sesion">
          <font>
             <Font size="20.0" />

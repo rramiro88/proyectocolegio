@@ -31,8 +31,9 @@ public class Alumno implements Serializable {
     private String turno;
 
    
+  
     
-    @OneToMany(mappedBy = "alumno", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Pago> pagos;
 
     public String getNombreYApellido() {

@@ -11,8 +11,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -22,9 +20,7 @@ import javax.persistence.Temporal;
 
 @Entity
 public class Pago implements Serializable {
-    @ManyToOne
-    @JoinColumn(name = "alumno_id")
-    private Alumno alumno;
+   
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -59,13 +55,6 @@ public class Pago implements Serializable {
         return concepto;
     }
 
-    public Alumno getAlumno() {
-        return alumno;
-    }
-
-    public void setAlumno(Alumno alumno) {
-        this.alumno = alumno;
-    }
 
     public void setConcepto(String concepto) {
         this.concepto = concepto;

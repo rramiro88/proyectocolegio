@@ -13,8 +13,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
-import sun.awt.X11.Screen;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -27,6 +27,10 @@ public class LoginController implements Initializable, screensframework.Controll
 
     @FXML
     private Button botonIniciarSesion;
+    @FXML
+    private TextField textoUsuario;
+    @FXML
+    private PasswordField passUsuario;
 
     /**
      * Initializes the controller class.
@@ -42,7 +46,10 @@ public class LoginController implements Initializable, screensframework.Controll
     @FXML
     private void iniciarSesion(ActionEvent event) {
 
-        myController.setScreen(MainApp.escritorio);
+        if(textoUsuario.getText().trim().equals("colegio") && passUsuario.getText().trim().equals("1234")){
+            myController.setScreen(MainApp.escritorio);
+        }
+        
 
     }
 

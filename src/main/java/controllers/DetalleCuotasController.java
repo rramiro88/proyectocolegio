@@ -72,9 +72,15 @@ public class DetalleCuotasController implements Initializable, screensframework.
     private void buscarCuotas(ActionEvent event) {
 
         Logica logica = new Logica();
-        alumno = logica.obtenerAlumnos(textoNombreYApellido.getText().trim(), textoId.getText().trim()).get(0);
 
-        data.addAll(alumno.getPagos());
+        try {
+            alumno = logica.obtenerAlumnos(textoNombreYApellido.getText().trim(), textoId.getText().trim()).get(0);
+            data.addAll(alumno.getPagos());
+            textoId.setText(String.valueOf(alumno.getId()));
+            textoNombreYApellido.setText(alumno.getNombreYApellido());
+        } catch (Exception e) {
+            
+        }
 
     }
 
