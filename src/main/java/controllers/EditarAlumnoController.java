@@ -151,7 +151,7 @@ public class EditarAlumnoController implements Initializable, screensframework.C
 
         }
 
-        MainApp.alumnoAEditar = null;
+        //MainApp.alumnoAEditar = null;
     }
 
     @FXML

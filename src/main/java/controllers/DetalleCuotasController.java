@@ -16,10 +16,20 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.print.PageLayout;
+import javafx.print.PageOrientation;
+import javafx.print.Paper;
+import javafx.print.PaperSource;
+import javafx.print.Printer;
+import javafx.print.PrinterJob;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import logica.Logica;
 import screensframework.ScreensController;
 
@@ -50,6 +60,25 @@ public class DetalleCuotasController implements Initializable, screensframework.
     Alumno alumno;
 
     ScreensController myController;
+    @FXML
+    private Pane panelImpresion;
+    private Label etiquetaNombreImpresion;
+    @FXML
+    private Label etiquetaNumeroRecibo;
+    @FXML
+    private Label etiquetaConcepto;
+    @FXML
+    private Label etiquetaImporte;
+    @FXML
+    private Label etiquetaNombre;
+    @FXML
+    private Label etiquetaNumeroRecibo1;
+    @FXML
+    private Label etiquetaConcepto1;
+    @FXML
+    private Label etiquetaImporte1;
+    @FXML
+    private Label etiquetaNombre1;
 
     /**
      * Initializes the controller class.
@@ -71,6 +100,7 @@ public class DetalleCuotasController implements Initializable, screensframework.
     @FXML
     private void buscarCuotas(ActionEvent event) {
 
+        data.clear();
         Logica logica = new Logica();
 
         try {
@@ -79,7 +109,7 @@ public class DetalleCuotasController implements Initializable, screensframework.
             textoId.setText(String.valueOf(alumno.getId()));
             textoNombreYApellido.setText(alumno.getNombreYApellido());
         } catch (Exception e) {
-            
+
         }
 
     }
@@ -95,4 +125,49 @@ public class DetalleCuotasController implements Initializable, screensframework.
         myController.setScreen(MainApp.escritorio);
     }
 
+    public void print(final Node node) {
+        Printer printer = Printer.getDefaultPrinter();
+        PageLayout pageLayout = printer.createPageLayout(Paper.A5, PageOrientation.LANDSCAPE, Printer.MarginType.HARDWARE_MINIMUM);
+        
+        
+        
+        
+
+        PrinterJob job = PrinterJob.createPrinterJob();
+        
+        
+        
+        job.setPrinter(printer);
+        //job.showPageSetupDialog(null);
+        //job.showPrintDialog(null);
+        job.getJobSettings().setJobName("Recibo");
+        
+        if (job != null) {
+            boolean success = job.printPage(pageLayout,node);
+            if (success) {
+                job.endJob();
+                System.out.println("Impresion aparentemente exitosa");
+            }
+        }
+    }
+
+    @FXML
+    private void imprimirRecibo(MouseEvent event) {
+        
+        etiquetaConcepto.setText(data.get(0).getConcepto());
+        etiquetaImporte.setText(String.valueOf(data.get(0).getMonto()));
+        etiquetaNumeroRecibo.setText(String.valueOf(data.get(0).getId()));
+        etiquetaNombre.setText(textoNombreYApellido.getText());
+        
+        etiquetaConcepto1.setText(data.get(0).getConcepto());
+        etiquetaImporte1.setText(String.valueOf(data.get(0).getMonto()));
+        etiquetaNumeroRecibo1.setText(String.valueOf(data.get(0).getId()));
+        etiquetaNombre1.setText(textoNombreYApellido.getText());
+        
+        
+        
+        panelImpresion.setVisible(true);
+        print(panelImpresion);
+        panelImpresion.setVisible(false);
+    }
 }

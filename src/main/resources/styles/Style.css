@@ -11,18 +11,18 @@ and open the template in the editor.
 #AnchorPane {
     -fx-background-color: linear-gradient(to bottom,#ebeffa,whitesmoke);
     -fx-background-image: url('../imagenes/Sin-nombre.png'); 
-    
+
 }
 
 .button{
-    
+
     -fx-background-color: linear-gradient(to bottom,white,cornflowerblue);
-    
+
 }
 
 .button:hover{
-    
-    
+
+
 }
 
 .button:pressed{
@@ -30,5 +30,25 @@ and open the template in the editor.
 }
 
 .label{
-/*    -fx-text-fill: white;*/
+    /*    -fx-text-fill: white;*/
 }
+
+.text-area {
+    -fx-background-color: white;
+}
+
+.text-area .scroll-pane {
+    -fx-background-color: white;
+}
+
+.text-area .scroll-pane .viewport{
+    -fx-background-color: white;
+}
+
+
+.text-area .scroll-pane .content{
+    -fx-background-color: white;
+}
+/*.text-area *.text {
+    -fx-text-alignment: center;
+}*/
