@@ -56,4 +56,8 @@ public class Logica {
 //    public void guardarPago(Pago pago) {
 //        dao.guardarPago(pago);
 //    }
+
+    public boolean guardarAlumno(Alumno alumnoACrear) {
+        return dao.guardarAlumno(alumnoACrear);
+    }
 }

@@ -6,7 +6,6 @@
 package controllers;
 
 import com.mycompany.proyectocolegio.MainApp;
-import dao.DAOGeneral;
 import entidades.Alumno;
 import java.net.URL;
 import java.util.Optional;
@@ -22,6 +21,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.ToggleGroup;
+import logica.Logica;
 import screensframework.ScreensController;
 
 /**
@@ -108,7 +108,7 @@ public class NuevoAlumnoController implements Initializable, screensframework.Co
 
     @FXML
     private void crearAlumno(ActionEvent event) {
-        DAOGeneral dao = new DAOGeneral();
+        Logica logica = new Logica();
 
         Alumno alumnoACrear = new Alumno();
         alumnoACrear.setDivision(comboDivision.getValue());
@@ -136,7 +136,7 @@ public class NuevoAlumnoController implements Initializable, screensframework.Co
 
             alumnoACrear.setNombreYApellido(textoNombreYApellido.getText());
 
-            if (dao.guardarAlumno(alumnoACrear)) {
+            if (logica.guardarAlumno(alumnoACrear)) {
 
                 Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
                 dialogo.setHeaderText("Informacion");
@@ -144,6 +144,11 @@ public class NuevoAlumnoController implements Initializable, screensframework.Co
                 dialogo.show();
                 
 
+            }else {
+                Alert dialogo = new Alert(Alert.AlertType.ERROR);
+                dialogo.setHeaderText("Informacion");
+                dialogo.setContentText("No se pudo guardar el alumno");
+                dialogo.show();
             }
 
         }

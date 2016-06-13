@@ -23,6 +23,7 @@ import javafx.print.PaperSource;
 import javafx.print.Printer;
 import javafx.print.PrinterJob;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -128,22 +129,16 @@ public class DetalleCuotasController implements Initializable, screensframework.
     public void print(final Node node) {
         Printer printer = Printer.getDefaultPrinter();
         PageLayout pageLayout = printer.createPageLayout(Paper.A5, PageOrientation.LANDSCAPE, Printer.MarginType.HARDWARE_MINIMUM);
-        
-        
-        
-        
 
         PrinterJob job = PrinterJob.createPrinterJob();
-        
-        
-        
+
         job.setPrinter(printer);
         //job.showPageSetupDialog(null);
         //job.showPrintDialog(null);
         job.getJobSettings().setJobName("Recibo");
-        
+
         if (job != null) {
-            boolean success = job.printPage(pageLayout,node);
+            boolean success = job.printPage(pageLayout, node);
             if (success) {
                 job.endJob();
                 System.out.println("Impresion aparentemente exitosa");
@@ -153,21 +148,29 @@ public class DetalleCuotasController implements Initializable, screensframework.
 
     @FXML
     private void imprimirRecibo(MouseEvent event) {
-        
+
         etiquetaConcepto.setText(data.get(0).getConcepto());
         etiquetaImporte.setText(String.valueOf(data.get(0).getMonto()));
         etiquetaNumeroRecibo.setText(String.valueOf(data.get(0).getId()));
         etiquetaNombre.setText(textoNombreYApellido.getText());
-        
+
         etiquetaConcepto1.setText(data.get(0).getConcepto());
         etiquetaImporte1.setText(String.valueOf(data.get(0).getMonto()));
         etiquetaNumeroRecibo1.setText(String.valueOf(data.get(0).getId()));
         etiquetaNombre1.setText(textoNombreYApellido.getText());
-        
-        
-        
+
         panelImpresion.setVisible(true);
-        print(panelImpresion);
+
+        try {
+            print(panelImpresion);
+        } catch (Exception e) {
+            Alert dialogo = new Alert(Alert.AlertType.ERROR);
+                dialogo.setHeaderText("Error");
+                dialogo.setContentText("No se puede imprimir. Verificar impresora.");
+                dialogo.show();
+                e.printStackTrace();
+        }
+
         panelImpresion.setVisible(false);
     }
 }

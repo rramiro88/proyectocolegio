@@ -68,9 +68,17 @@ public class DAOGeneral {
         Session s = sf.openSession();
         s.beginTransaction();
 
-        Criteria c = s.createCriteria(Alumno.class)
-                .add(Restrictions.like("nombreYApellido", nombre, MatchMode.START));
-        respuesta = c.list();
+        
+//        Query consulta = s.createSQLQuery("select division, nivel, nombreYApellido, turno from Alumno where nombreYApellido like \"%" + nombre +"%\"");
+        Query consulta = s.createQuery("From Alumno where nombreYApellido like :parametro");
+        consulta.setParameter("parametro","%"+ nombre +"%" );
+        
+        respuesta = consulta.list();
+        
+        
+//        Criteria c = s.createCriteria(Alumno.class)
+//                .add(Restrictions.like("nombreYApellido", nombre, MatchMode.START));
+//        respuesta = c.list();
 
         System.out.println("Alumnos que coinciden con la busqueda: " + respuesta.size());
 
