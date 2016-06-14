@@ -7,7 +7,6 @@ import static javafx.application.Application.launch;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class MainApp extends Application {
 
@@ -46,8 +45,9 @@ public class MainApp extends Application {
         Scene scene = new Scene(root);
 
         setUserAgentStylesheet(STYLESHEET_MODENA);
+        stage.setTitle("Sistema de Gestión de Cobros - Colegio Nuestra Señora de Guadalupe");
 
-        stage.initStyle( StageStyle.UNDECORATED );
+//        stage.initStyle( StageStyle.UNDECORATED );
    
 
 //        stage.setMaximized(true);

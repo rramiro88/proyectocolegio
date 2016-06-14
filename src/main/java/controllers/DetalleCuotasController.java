@@ -52,6 +52,9 @@ public class DetalleCuotasController implements Initializable, screensframework.
     @FXML
     private TableColumn<Pago, String> columnaMonto;
     @FXML
+    private TableColumn<Pago, String> columnaAnio;
+
+    @FXML
     private TextField textoNombreYApellido;
     @FXML
     private TextField textoId;
@@ -80,6 +83,14 @@ public class DetalleCuotasController implements Initializable, screensframework.
     private Label etiquetaImporte1;
     @FXML
     private Label etiquetaNombre1;
+    @FXML
+    private Label etiquetaMes;
+    @FXML
+    private Label etiquetaAnio;
+    @FXML
+    private Label etiquetaMes1;
+    @FXML
+    private Label etiquetaAnio1;
 
     /**
      * Initializes the controller class.
@@ -91,6 +102,7 @@ public class DetalleCuotasController implements Initializable, screensframework.
         columnaFechaPago.setCellValueFactory(new PropertyValueFactory<>("fechaDePago"));
         columnaMes.setCellValueFactory(new PropertyValueFactory<>("mes"));
         columnaMonto.setCellValueFactory(new PropertyValueFactory<>("monto"));
+        columnaAnio.setCellValueFactory(new PropertyValueFactory<>("anio"));
 
         data = FXCollections.observableArrayList();
 
@@ -153,11 +165,15 @@ public class DetalleCuotasController implements Initializable, screensframework.
         etiquetaImporte.setText(String.valueOf(data.get(0).getMonto()));
         etiquetaNumeroRecibo.setText(String.valueOf(data.get(0).getId()));
         etiquetaNombre.setText(textoNombreYApellido.getText());
+        etiquetaAnio.setText(data.get(0).getAnio());
+        etiquetaMes.setText(data.get(0).getMes());
 
         etiquetaConcepto1.setText(data.get(0).getConcepto());
         etiquetaImporte1.setText(String.valueOf(data.get(0).getMonto()));
         etiquetaNumeroRecibo1.setText(String.valueOf(data.get(0).getId()));
         etiquetaNombre1.setText(textoNombreYApellido.getText());
+        etiquetaAnio1.setText(data.get(0).getAnio());
+        etiquetaMes1.setText(data.get(0).getMes());
 
         panelImpresion.setVisible(true);
 
@@ -165,10 +181,10 @@ public class DetalleCuotasController implements Initializable, screensframework.
             print(panelImpresion);
         } catch (Exception e) {
             Alert dialogo = new Alert(Alert.AlertType.ERROR);
-                dialogo.setHeaderText("Error");
-                dialogo.setContentText("No se puede imprimir. Verificar impresora.");
-                dialogo.show();
-                e.printStackTrace();
+            dialogo.setHeaderText("Error");
+            dialogo.setContentText("No se puede imprimir. Verificar impresora.");
+            dialogo.show();
+            e.printStackTrace();
         }
 
         panelImpresion.setVisible(false);

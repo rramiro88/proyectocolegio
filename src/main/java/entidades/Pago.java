@@ -32,6 +32,17 @@ public class Pago implements Serializable {
     private String concepto;
     private float monto;
     private String mes;
+    private String anio;
+
+    public String getAnio() {
+        return anio;
+    }
+
+    public void setAnio(String anio) {
+        this.anio = anio;
+    }
+    
+    
 
     public String getMes() {
         return mes;

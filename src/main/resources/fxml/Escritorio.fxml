@@ -36,12 +36,12 @@
                               <Image url="@../imagenes/success.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="333.0" layoutY="407.0" text="Pagar Cuota">
+                        <Label layoutX="293.0" layoutY="407.0" text="Registrar colaboracion">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <Label layoutX="526.0" layoutY="407.0" text="Imprimir Recibo">
+                        <Label layoutX="526.0" layoutY="407.0" text="Imprimir recibo">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -68,7 +68,7 @@
                               <Image url="@../imagenes/user-3.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="730.0" layoutY="407.0" text="Modificar alumno">
+                        <Label layoutX="720.0" layoutY="382.0" prefHeight="70.0" prefWidth="150.0" text="Ver, modificar o eliminar alumnos" wrapText="true">
                            <font>
                               <Font size="15.0" />
                            </font>

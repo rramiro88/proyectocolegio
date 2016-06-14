@@ -12,16 +12,21 @@ import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.print.PageLayout;
+import javafx.print.PageOrientation;
+import javafx.print.Paper;
 import javafx.print.Printer;
 import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
@@ -32,6 +37,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import logica.Logica;
 import screensframework.ScreensController;
 
@@ -60,6 +66,8 @@ public class PagarCuotaController implements Initializable, screensframework.Con
     @FXML
     private TableColumn<Alumno, String> columnaTurno;
     @FXML
+    private TableColumn<Alumno, String> columnaId;
+    @FXML
     private TabPane tabPane;
     @FXML
     private Tab tabAlumnos;
@@ -77,7 +85,35 @@ public class PagarCuotaController implements Initializable, screensframework.Con
     private ImageView imagenPagar;
     @FXML
     private Label etiquetaPagar;
-    private TableColumn<?, ?> columnaUltimoPago;
+
+    @FXML
+    private ComboBox<String> comboAnio;
+    @FXML
+    private Pane panelImpresion;
+    @FXML
+    private Label etiquetaNumeroRecibo;
+    @FXML
+    private Label etiquetaConcepto;
+    @FXML
+    private Label etiquetaImporte;
+    @FXML
+    private Label etiquetaNombre;
+    @FXML
+    private Label etiquetaNumeroRecibo1;
+    @FXML
+    private Label etiquetaConcepto1;
+    @FXML
+    private Label etiquetaImporte1;
+    @FXML
+    private Label etiquetaNombre1;
+    @FXML
+    private Label etiquetaMes;
+    @FXML
+    private Label etiquetaAnio;
+    @FXML
+    private Label etiquetaMes1;
+    @FXML
+    private Label etiquetaAnio1;
 
     /**
      * Initializes the controller class.
@@ -92,6 +128,7 @@ public class PagarCuotaController implements Initializable, screensframework.Con
         columnaDivision.setCellValueFactory(new PropertyValueFactory<>("division"));
         columnaTurno.setCellValueFactory(new PropertyValueFactory<>("turno"));
         columnaNivel.setCellValueFactory(new PropertyValueFactory<>("nivel"));
+        columnaId.setCellValueFactory(new PropertyValueFactory<>("id"));
 
         //se indica a la tabla que datos mostrar.
         tablaAlumnos.setItems(data);
@@ -105,6 +142,23 @@ public class PagarCuotaController implements Initializable, screensframework.Con
                 );
         comboConcepto.setItems(conceptos);
         comboConcepto.setValue("Colaboracion Mensual");
+
+        ObservableList<String> anios
+                = FXCollections.observableArrayList(
+                        "2016",
+                        "2017",
+                        "2018",
+                        "2019",
+                        "2020",
+                        "2021",
+                        "2022",
+                        "2023",
+                        "2024",
+                        "2025",
+                        "2026");
+
+        comboAnio.setItems(anios);
+        comboAnio.setValue(String.valueOf(LocalDate.now().getYear()));
 
         ObservableList<String> meses
                 = FXCollections.observableArrayList(
@@ -162,17 +216,26 @@ public class PagarCuotaController implements Initializable, screensframework.Con
         imagenPagar.setDisable(true);
         etiquetaPagar.setDisable(true);
         myController.setScreen(MainApp.escritorio);
+        
+        textoNombre.setText("");
+        textoId.setText("");
+        textoMonto.setText("");
+        textoAlumnoSeleccionado.setText("");
     }
 
     @FXML
     private void pagarCuota(MouseEvent event) {
 
         try {
+
             Pago pago = new Pago();
+
+            //Seteo los campos de la tabla
             pago.setConcepto(comboConcepto.getValue().trim());
             pago.setFechaDePago(Date.valueOf(LocalDate.now()));
             pago.setMonto(Integer.valueOf(textoMonto.getText().trim()));
             pago.setMes(comboMes.getValue().trim());
+            pago.setAnio(comboAnio.getValue().trim());
 
             int indice = tablaAlumnos.getSelectionModel().getSelectedIndex();
             Alumno alumnoPagador = data.get(indice);
@@ -181,25 +244,52 @@ public class PagarCuotaController implements Initializable, screensframework.Con
 
             //pago.setAlumno(alumnoPagador);
             //logica.guardarPago(pago);
-            if (alumnoPagador.getPagos().add(pago)
+            Alert dialogoConfirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+            dialogoConfirmacion.setTitle("Confirmar Pago");
+            dialogoConfirmacion.setContentText("¿Está seguro que desea registrar este pago?");
+
+            Optional<ButtonType> respuestaDialogo = dialogoConfirmacion.showAndWait();
+
+            if (respuestaDialogo.get() == ButtonType.OK
+                    && alumnoPagador.getPagos().add(pago)
                     && logica.actualizarAlumno(alumnoPagador)) {
+
                 Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
                 dialogo.setHeaderText("Informacion");
                 dialogo.setContentText("Colaboracion registrada correctamente.");
                 dialogo.show();
 
-                // ACA SE DEBERIA IMPRIMIR
-                
-                
-                
-                
-                
+                //Seteo los campos a imprimir
+                etiquetaConcepto.setText(pago.getConcepto());
+                etiquetaImporte.setText(String.valueOf(pago.getMonto()));
+                etiquetaNombre.setText(textoNombre.getText().trim());
+                etiquetaNumeroRecibo.setText(String.valueOf(pago.getId()));
+                etiquetaAnio.setText(String.valueOf(pago.getAnio()));
+                etiquetaMes.setText(pago.getMes());
+                etiquetaConcepto1.setText(pago.getConcepto());
+                etiquetaImporte1.setText(String.valueOf(pago.getMonto()));
+                etiquetaNombre1.setText(textoNombre.getText().trim());
+                etiquetaNumeroRecibo1.setText(String.valueOf(pago.getId()));
+                etiquetaAnio1.setText(String.valueOf(pago.getAnio()));
+                etiquetaMes1.setText(pago.getMes());
+
                 tabAlumnos.setDisable(false);
                 tabPagos.setDisable(true);
                 tabPane.getSelectionModel().select(0);
                 imagenPagar.setDisable(true);
                 etiquetaPagar.setDisable(true);
                 data.clear();
+
+                panelImpresion.setVisible(true);
+
+                try {
+                    print(panelImpresion);
+                } catch (Exception e) {
+                    System.out.println("error en impresion");
+                }
+
+                panelImpresion.setVisible(false);
+
                 pago = null;
 
             }
@@ -220,27 +310,36 @@ public class PagarCuotaController implements Initializable, screensframework.Con
             Alumno alumno = data.get(indice);
 
             textoAlumnoSeleccionado.setText(alumno.getNombreYApellido());
-            
+
             tabPagos.setDisable(false);
             tabPane.getSelectionModel().select(1);
             tabAlumnos.setDisable(true);
             imagenPagar.setDisable(false);
             etiquetaPagar.setDisable(false);
+            textoNombre.setText(alumno.getNombreYApellido());
+            textoId.setText(String.valueOf(alumno.getId()));
         }
 
     }
-    
-    
+
     public void print(final Node node) {
-    Printer printer = Printer.getDefaultPrinter();
+        Printer printer = Printer.getDefaultPrinter();
+        PageLayout pageLayout = printer.createPageLayout(Paper.A5, PageOrientation.LANDSCAPE, Printer.MarginType.HARDWARE_MINIMUM);
 
-    PrinterJob job = PrinterJob.createPrinterJob();
-    if (job != null) {
-        boolean success = job.printPage(node);
-        if (success) {
-            job.endJob();
+        PrinterJob job = PrinterJob.createPrinterJob();
+
+        job.setPrinter(printer);
+        //job.showPageSetupDialog(null);
+        //job.showPrintDialog(null);
+        job.getJobSettings().setJobName("Recibo");
+
+        if (job != null) {
+            boolean success = job.printPage(pageLayout, node);
+            if (success) {
+                job.endJob();
+                System.out.println("Impresion aparentemente exitosa");
+            }
         }
     }
-}
 
 }

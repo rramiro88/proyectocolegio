@@ -9,6 +9,7 @@ import com.mycompany.proyectocolegio.MainApp;
 import entidades.Alumno;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -117,7 +119,13 @@ public class BuscarAlumnoController implements Initializable, screensframework.C
     private void eliminarAlumno(MouseEvent event) {
         int indice = tablaAlumnos.getSelectionModel().getSelectedIndex();
 
-        if (indice > -1) {
+        Alert dialogoConfirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+        dialogoConfirmacion.setTitle("Confirmar eliminacion");
+        dialogoConfirmacion.setContentText("¿Está seguro que desea eliminar este alumno?");
+
+        Optional<ButtonType> respuestaDialogo = dialogoConfirmacion.showAndWait();
+
+        if (respuestaDialogo.get() == ButtonType.OK && indice > -1) {
             Alumno alumnoAEliminar = data.get(indice);
             Logica logica = new Logica();
             logica.eliminarAlumno(alumnoAEliminar);

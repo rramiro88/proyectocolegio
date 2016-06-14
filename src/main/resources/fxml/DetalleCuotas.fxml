@@ -12,92 +12,102 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" stylesheets="@../styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DetalleCuotasController">
-   <children>
-      <TableView fx:id="tablaCuotas" layoutX="265.0" layoutY="399.0" prefHeight="369.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="399.0">
-        <columns>
-          <TableColumn fx:id="columnaFechaPago" prefWidth="285.0" text="Fecha de pago" />
-          <TableColumn fx:id="columnaMes" prefWidth="287.0" text="Mes " />
-            <TableColumn fx:id="columnaConcepto" prefWidth="231.0" text="Concepto" />
-            <TableColumn fx:id="columnaMonto" prefWidth="217.0" text="Monto" />
-        </columns>
-      </TableView>
-      <TextField fx:id="textoNombreYApellido" layoutX="588.0" layoutY="72.0" prefHeight="45.0" prefWidth="248.0" />
-      <TextField fx:id="textoId" layoutX="588.0" layoutY="166.0" prefHeight="45.0" prefWidth="248.0" />
-      <Label layoutX="371.0" layoutY="77.0" prefHeight="35.0" prefWidth="200.0" text="Nombre y Apellido">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="540.0" layoutY="158.0" prefHeight="62.0" prefWidth="31.0" text="Id">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Button layoutX="435.0" layoutY="279.0" mnemonicParsing="false" onAction="#buscarCuotas" prefHeight="45.0" prefWidth="241.0" text="Buscar" />
-      <Button layoutX="735.0" layoutY="279.0" mnemonicParsing="false" onAction="#volverAlInicio" prefHeight="45.0" prefWidth="241.0" text="Volver" />
-      <ImageView fitHeight="103.0" fitWidth="120.0" layoutX="136.0" layoutY="158.0" onMouseClicked="#imprimirRecibo" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../imagenes/print.png" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <effect>
-            <DropShadow />
-         </effect>
-      </ImageView>
-      <Label layoutX="105.0" layoutY="284.0" prefHeight="29.0" prefWidth="166.0" text="Imprimir Recibo">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Pane fx:id="panelImpresion" prefHeight="350.0" prefWidth="693.0" visible="false">
-         <children>
-            <GridPane layoutX="13.0" layoutY="195.0" prefHeight="105.0" prefWidth="321.0">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="89.0" minWidth="10.0" prefWidth="80.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="267.0" minWidth="10.0" prefWidth="241.0" />
-               </columnConstraints>
-               <rowConstraints>
+    <children>
+        <TableView fx:id="tablaCuotas" layoutX="265.0" layoutY="399.0" prefHeight="369.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="399.0">
+            <columns>
+                <TableColumn fx:id="columnaFechaPago" prefWidth="285.0" text="Fecha de pago" />
+                <TableColumn fx:id="columnaMes" prefWidth="191.0" text="Mes " />
+                <TableColumn fx:id="columnaAnio" prefWidth="179.0" text="Año" />
+                <TableColumn fx:id="columnaConcepto" prefWidth="197.0" text="Concepto" />
+                <TableColumn fx:id="columnaMonto" prefWidth="171.0" text="Monto" />
+            
+            </columns>
+        </TableView>
+        <TextField fx:id="textoNombreYApellido" layoutX="588.0" layoutY="72.0" prefHeight="45.0" prefWidth="248.0" />
+        <TextField fx:id="textoId" layoutX="588.0" layoutY="166.0" prefHeight="45.0" prefWidth="248.0" />
+        <Label layoutX="371.0" layoutY="77.0" prefHeight="35.0" prefWidth="200.0" text="Nombre y Apellido">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label layoutX="540.0" layoutY="158.0" prefHeight="62.0" prefWidth="31.0" text="Id">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Button layoutX="435.0" layoutY="279.0" mnemonicParsing="false" onAction="#buscarCuotas" prefHeight="45.0" prefWidth="241.0" text="Buscar" />
+        <Button layoutX="735.0" layoutY="279.0" mnemonicParsing="false" onAction="#volverAlInicio" prefHeight="45.0" prefWidth="241.0" text="Volver" />
+        <ImageView fitHeight="103.0" fitWidth="120.0" layoutX="136.0" layoutY="158.0" onMouseClicked="#imprimirRecibo" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../imagenes/print.png" />
+            </image>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+                <DropShadow />
+            </effect>
+        </ImageView>
+        <Label layoutX="105.0" layoutY="284.0" prefHeight="29.0" prefWidth="166.0" text="Imprimir Recibo">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Pane fx:id="panelImpresion" prefHeight="350.0" prefWidth="693.0">
+            <children>
+                <GridPane layoutX="13.0" layoutY="195.0" prefHeight="105.0" prefWidth="321.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="89.0" minWidth="10.0" prefWidth="80.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="267.0" minWidth="10.0" prefWidth="241.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <children>
-                  <Label fx:id="etiquetaNumeroRecibo" layoutX="117.0" layoutY="219.0" prefHeight="35.0" prefWidth="157.0" text="numerorecibo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label fx:id="etiquetaConcepto" layoutX="117.0" layoutY="254.0" prefHeight="35.0" prefWidth="157.0" text="concepto" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label layoutX="14.0" layoutY="254.0" prefHeight="35.0" prefWidth="103.0" text="Concepto:" GridPane.rowIndex="2" />
-                  <Label layoutX="14.0" layoutY="219.0" prefHeight="35.0" prefWidth="103.0" text="Recibo N° " GridPane.rowIndex="1" />
-                  <Label layoutX="14.0" layoutY="295.0" prefHeight="35.0" prefWidth="103.0" text="Importe:" GridPane.rowIndex="3" />
-                  <Label fx:id="etiquetaImporte" layoutX="117.0" layoutY="295.0" prefHeight="35.0" prefWidth="157.0" text="importe" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Label fx:id="etiquetaNombre" layoutX="14.0" layoutY="195.0" prefHeight="29.0" prefWidth="328.0" text="nombrealumno" GridPane.columnIndex="1" />
-               </children>
-            </GridPane>
-            <TextArea editable="false" prefHeight="195.0" prefWidth="347.0" styleClass="imprimible" text="Colegio Nuestra Señora de Guadalupe&#10;&#10;Dorrego 355 - (3050) Calchaqui - Santa Fe&#10;&#10;Imp Ganancias: Exento IVA: Exento&#10;Escuela Primaria 1134 &#10;Escuela Secundaria 8116&#10;Aporte estatal 100%&#10;&#10;ORIGINAL&#10;" />
-            <TextArea editable="false" layoutX="347.0" prefHeight="195.0" prefWidth="347.0" styleClass="imprimible" text="Colegio Nuestra Señora de Guadalupe&#10;&#10;Dorrego 355 - (3050) Calchaqui - Santa Fe&#10;&#10;Imp Ganancias: Exento IVA: Exento&#10;Escuela Primaria 1134 &#10;Escuela Secundaria 8116&#10;Aporte estatal 100%&#10;&#10;DUPLICADO&#10;" />
-            <GridPane layoutX="360.0" layoutY="195.0" prefHeight="105.0" prefWidth="321.0">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="169.0" minWidth="10.0" prefWidth="77.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="267.0" minWidth="10.0" prefWidth="244.0" />
-               </columnConstraints>
-               <rowConstraints>
+                    </rowConstraints>
+                    <children>
+                        <Label fx:id="etiquetaNumeroRecibo" layoutX="117.0" layoutY="219.0" prefHeight="35.0" prefWidth="157.0" text="numerorecibo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="etiquetaConcepto" layoutX="117.0" layoutY="254.0" prefHeight="35.0" prefWidth="157.0" text="concepto" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label layoutX="14.0" layoutY="254.0" prefHeight="35.0" prefWidth="103.0" text="Concepto:" GridPane.rowIndex="2" />
+                        <Label layoutX="14.0" layoutY="219.0" prefHeight="35.0" prefWidth="103.0" text="Recibo N° " GridPane.rowIndex="1" />
+                        <Label layoutX="14.0" layoutY="295.0" prefHeight="35.0" prefWidth="103.0" text="Importe:" GridPane.rowIndex="3" />
+                        <Label fx:id="etiquetaImporte" layoutX="117.0" layoutY="295.0" prefHeight="35.0" prefWidth="157.0" text="importe" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="etiquetaNombre" layoutX="14.0" layoutY="195.0" prefHeight="29.0" prefWidth="328.0" text="nombrealumno" GridPane.columnIndex="1" />
+                  <Label fx:id="etiquetaMes" text="Mes" GridPane.rowIndex="4" />
+                  <Label fx:id="etiquetaAnio" text="Año" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label text="Alumno:" />
+                    </children>
+                </GridPane>
+                <TextArea editable="false" prefHeight="195.0" prefWidth="347.0" styleClass="imprimible" text="Colegio Nuestra Señora de Guadalupe&#10;&#10;Dorrego 355 - (3050) Calchaqui - Santa Fe&#10;&#10;Imp Ganancias: Exento IVA: Exento&#10;Escuela Primaria 1134 &#10;Escuela Secundaria 8116&#10;Aporte estatal 100%&#10;&#10;ORIGINAL&#10;" />
+                <TextArea editable="false" layoutX="347.0" prefHeight="195.0" prefWidth="347.0" styleClass="imprimible" text="Colegio Nuestra Señora de Guadalupe&#10;&#10;Dorrego 355 - (3050) Calchaqui - Santa Fe&#10;&#10;Imp Ganancias: Exento IVA: Exento&#10;Escuela Primaria 1134 &#10;Escuela Secundaria 8116&#10;Aporte estatal 100%&#10;&#10;DUPLICADO&#10;" />
+                <GridPane layoutX="360.0" layoutY="195.0" prefHeight="105.0" prefWidth="321.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="169.0" minWidth="10.0" prefWidth="77.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="267.0" minWidth="10.0" prefWidth="244.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <children>
-                  <Label fx:id="etiquetaNumeroRecibo1" layoutX="460.0" layoutY="228.0" prefHeight="35.0" prefWidth="157.0" text="numerorecibo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label fx:id="etiquetaConcepto1" layoutX="460.0" layoutY="263.0" prefHeight="35.0" prefWidth="157.0" text="concepto" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label fx:id="etiquetaImporte1" layoutX="460.0" layoutY="304.0" prefHeight="35.0" prefWidth="157.0" text="importe" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Label layoutX="357.0" layoutY="263.0" prefHeight="35.0" prefWidth="103.0" text="Concepto:" GridPane.rowIndex="2" />
-                  <Label layoutX="357.0" layoutY="228.0" prefHeight="35.0" prefWidth="103.0" text="Recibo N° " GridPane.rowIndex="1" />
-                  <Label layoutX="357.0" layoutY="304.0" prefHeight="35.0" prefWidth="103.0" text="Importe:" GridPane.rowIndex="3" />
-                  <Label fx:id="etiquetaNombre1" layoutX="357.0" layoutY="204.0" prefHeight="22.0" prefWidth="173.0" text="nombrealumno" GridPane.columnIndex="1" />
-               </children>
-            </GridPane>
-         </children>
-      </Pane>
-   </children>
+                    </rowConstraints>
+                    <children>
+                        <Label fx:id="etiquetaNumeroRecibo1" layoutX="460.0" layoutY="228.0" prefHeight="35.0" prefWidth="157.0" text="numerorecibo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="etiquetaConcepto1" layoutX="460.0" layoutY="263.0" prefHeight="35.0" prefWidth="157.0" text="concepto" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="etiquetaImporte1" layoutX="460.0" layoutY="304.0" prefHeight="35.0" prefWidth="157.0" text="importe" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label layoutX="357.0" layoutY="263.0" prefHeight="35.0" prefWidth="103.0" text="Concepto:" GridPane.rowIndex="2" />
+                        <Label layoutX="357.0" layoutY="228.0" prefHeight="35.0" prefWidth="103.0" text="Recibo N° " GridPane.rowIndex="1" />
+                        <Label layoutX="357.0" layoutY="304.0" prefHeight="35.0" prefWidth="103.0" text="Importe:" GridPane.rowIndex="3" />
+                        <Label fx:id="etiquetaNombre1" layoutX="357.0" layoutY="204.0" prefHeight="22.0" prefWidth="173.0" text="nombrealumno" GridPane.columnIndex="1" />
+                  <Label fx:id="etiquetaMes1" text="Mes" GridPane.rowIndex="4" />
+                  <Label fx:id="etiquetaAnio1" text="Año" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label text="Alumno:" />
+                    </children>
+                </GridPane>
+            </children>
+        </Pane>
+    </children>
 </AnchorPane>
