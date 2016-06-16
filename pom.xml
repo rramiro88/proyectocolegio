@@ -129,14 +129,14 @@
         </dependency>
         <dependency>
             <groupId>unknown.binary</groupId>
-            <artifactId>mysql-connector-java-5.1.23-bin</artifactId>
-            <version>SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>unknown.binary</groupId>
             <artifactId>hibernate-jpamodelgen-4.3.1.Final</artifactId>
             <version>SNAPSHOT</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-c3p0</artifactId>
+            <version>4.3.1.Final</version>
         </dependency>
     </dependencies>
 </project>

@@ -8,7 +8,6 @@ package logica;
 import entidades.Alumno;
 import java.util.List;
 import dao.DAOGeneral;
-import entidades.Pago;
 import javafx.collections.FXCollections;
 
 /**

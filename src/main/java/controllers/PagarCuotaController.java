@@ -114,6 +114,12 @@ public class PagarCuotaController implements Initializable, screensframework.Con
     private Label etiquetaMes1;
     @FXML
     private Label etiquetaAnio1;
+    @FXML
+    private TableColumn<Alumno, String> columnaUltimoPago;
+    @FXML
+    private Label etiquetaCurso;
+    @FXML
+    private Label etiquetaCurso1;
 
     /**
      * Initializes the controller class.
@@ -129,6 +135,7 @@ public class PagarCuotaController implements Initializable, screensframework.Con
         columnaTurno.setCellValueFactory(new PropertyValueFactory<>("turno"));
         columnaNivel.setCellValueFactory(new PropertyValueFactory<>("nivel"));
         columnaId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        columnaUltimoPago.setCellValueFactory(new PropertyValueFactory<>("ultimoPago"));
 
         //se indica a la tabla que datos mostrar.
         tablaAlumnos.setItems(data);
@@ -202,6 +209,14 @@ public class PagarCuotaController implements Initializable, screensframework.Con
 
         Logica logica = new Logica();
         List<Alumno> resultado = logica.obtenerAlumnos(textoNombre.getText().trim(), textoId.getText().trim());
+        
+        for(Alumno a : resultado){
+            a.obtenerUltimoPago();
+        }
+        
+        
+        
+        
 
         data.addAll(resultado);
 
@@ -266,13 +281,15 @@ public class PagarCuotaController implements Initializable, screensframework.Con
                 etiquetaNumeroRecibo.setText(String.valueOf(pago.getId()));
                 etiquetaAnio.setText(String.valueOf(pago.getAnio()));
                 etiquetaMes.setText(pago.getMes());
+                etiquetaCurso.setText(alumnoPagador.getNivel() + " " + alumnoPagador.getDivision());
                 etiquetaConcepto1.setText(pago.getConcepto());
                 etiquetaImporte1.setText(String.valueOf(pago.getMonto()));
                 etiquetaNombre1.setText(textoNombre.getText().trim());
                 etiquetaNumeroRecibo1.setText(String.valueOf(pago.getId()));
                 etiquetaAnio1.setText(String.valueOf(pago.getAnio()));
                 etiquetaMes1.setText(pago.getMes());
-
+                etiquetaCurso1.setText(alumnoPagador.getNivel() + " " + alumnoPagador.getDivision());
+                
                 tabAlumnos.setDisable(false);
                 tabPagos.setDisable(true);
                 tabPane.getSelectionModel().select(0);

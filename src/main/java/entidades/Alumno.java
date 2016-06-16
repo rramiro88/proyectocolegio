@@ -29,9 +29,19 @@ public class Alumno implements Serializable {
     private String nivel;
     private String division;
     private String turno;
+    private String ultimoPago;
 
    
   
+    public void obtenerUltimoPago(){
+        
+        Pago ultimo;
+        if(!pagos.isEmpty()){
+            ultimo = pagos.get(pagos.size()-1);
+            ultimoPago = ultimo.getMes() + " " + ultimo.getAnio();            
+        }
+        
+    }
     
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Pago> pagos;
@@ -87,5 +97,15 @@ public class Alumno implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String getUltimoPago() {
+        return ultimoPago;
+    }
+
+    public void setUltimoPago(String ultimoPago) {
+        this.ultimoPago = ultimoPago;
+    }
+    
+    
 
 }

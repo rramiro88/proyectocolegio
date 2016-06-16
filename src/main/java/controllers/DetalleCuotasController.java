@@ -19,7 +19,6 @@ import javafx.fxml.Initializable;
 import javafx.print.PageLayout;
 import javafx.print.PageOrientation;
 import javafx.print.Paper;
-import javafx.print.PaperSource;
 import javafx.print.Printer;
 import javafx.print.PrinterJob;
 import javafx.scene.Node;
@@ -91,6 +90,10 @@ public class DetalleCuotasController implements Initializable, screensframework.
     private Label etiquetaMes1;
     @FXML
     private Label etiquetaAnio1;
+    @FXML
+    private Label etiquetaCurso;
+    @FXML
+    private Label etiquetaCurso1;
 
     /**
      * Initializes the controller class.
@@ -161,12 +164,17 @@ public class DetalleCuotasController implements Initializable, screensframework.
     @FXML
     private void imprimirRecibo(MouseEvent event) {
 
+        Logica logica = new Logica();
+
+        Alumno alumnoPagador = logica.obtenerAlumnos("", textoId.getText()).get(0);
+
         etiquetaConcepto.setText(data.get(0).getConcepto());
         etiquetaImporte.setText(String.valueOf(data.get(0).getMonto()));
         etiquetaNumeroRecibo.setText(String.valueOf(data.get(0).getId()));
         etiquetaNombre.setText(textoNombreYApellido.getText());
         etiquetaAnio.setText(data.get(0).getAnio());
         etiquetaMes.setText(data.get(0).getMes());
+        etiquetaCurso.setText(alumnoPagador.getNivel() + " " + alumnoPagador.getDivision());
 
         etiquetaConcepto1.setText(data.get(0).getConcepto());
         etiquetaImporte1.setText(String.valueOf(data.get(0).getMonto()));
@@ -174,6 +182,7 @@ public class DetalleCuotasController implements Initializable, screensframework.
         etiquetaNombre1.setText(textoNombreYApellido.getText());
         etiquetaAnio1.setText(data.get(0).getAnio());
         etiquetaMes1.setText(data.get(0).getMes());
+        etiquetaCurso1.setText(alumnoPagador.getNivel() + " " + alumnoPagador.getDivision());
 
         panelImpresion.setVisible(true);
 
