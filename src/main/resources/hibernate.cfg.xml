@@ -8,6 +8,9 @@
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">root</property>
         
+        <property name="hibernate.hbm2ddl.auto">validate</property>
+
+        
     
     
         <property name="hibernate.connection.provider_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</property>

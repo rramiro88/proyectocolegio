@@ -341,7 +341,7 @@ public class PagarCuotaController implements Initializable, screensframework.Con
 
     public void print(final Node node) {
         Printer printer = Printer.getDefaultPrinter();
-        PageLayout pageLayout = printer.createPageLayout(Paper.A5, PageOrientation.LANDSCAPE, Printer.MarginType.HARDWARE_MINIMUM);
+        PageLayout pageLayout = printer.createPageLayout(Paper.A5, PageOrientation.PORTRAIT, Printer.MarginType.HARDWARE_MINIMUM);
 
         PrinterJob job = PrinterJob.createPrinterJob();
 
