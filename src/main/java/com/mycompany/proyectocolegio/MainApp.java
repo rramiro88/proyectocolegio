@@ -50,7 +50,7 @@ public class MainApp extends Application {
 //        stage.initStyle( StageStyle.UNDECORATED );
    
 
-//        stage.setMaximized(true);
+        stage.setMaximized(true);
 
         stage.setScene(scene);
         stage.show();

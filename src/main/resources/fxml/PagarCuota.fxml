@@ -13,20 +13,20 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" stylesheets="@../styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PagarCuotaController">
+<AnchorPane id="AnchorPane" prefHeight="900.0" prefWidth="1600.0" stylesheets="@../styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PagarCuotaController">
     <children>
-        <TabPane fx:id="tabPane" layoutY="274.0" prefHeight="492.0" prefWidth="1024.0">
+        <TabPane fx:id="tabPane" layoutY="274.0" prefHeight="624.0" prefWidth="1600.0">
             <tabs>
                 <Tab fx:id="tabAlumnos" closable="false" text="Alumnos">
                     <content>
-                        <TableView fx:id="tablaAlumnos" editable="true" layoutX="103.0" layoutY="274.0" opacity="0.73" prefHeight="326.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="274.0">
+                        <TableView fx:id="tablaAlumnos" editable="true" layoutX="103.0" layoutY="274.0" opacity="0.73" prefHeight="591.0" prefWidth="1600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="274.0">
                             <columns>
                                 <TableColumn fx:id="columnaNombre" prefWidth="252.0" text="Nombre" />
-                                <TableColumn fx:id="columnaNivel" prefWidth="112.0" text="Nivel" />
-                                <TableColumn fx:id="columnaDivision" prefWidth="203.0" text="Division" />
-                                <TableColumn fx:id="columnaTurno" prefWidth="186.0" text="Turno" />
-                                <TableColumn fx:id="columnaId" prefWidth="98.0" text="Codigo (ID)" />
-                                <TableColumn fx:id="columnaUltimoPago" prefWidth="172.0" text="Ultimo Pago" />
+                                <TableColumn fx:id="columnaNivel" prefWidth="341.0" text="Nivel" />
+                                <TableColumn fx:id="columnaDivision" prefWidth="288.0" text="Division" />
+                                <TableColumn fx:id="columnaTurno" prefWidth="225.0" text="Turno" />
+                                <TableColumn fx:id="columnaId" prefWidth="204.0" text="Codigo (ID)" />
+                                <TableColumn fx:id="columnaUltimoPago" prefWidth="290.0" text="Ultimo Pago" />
                        
                             </columns>
                         </TableView>
@@ -36,58 +36,58 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <Label layoutX="223.0" layoutY="110.0" prefHeight="32.0" prefWidth="221.0" text="Alumno Seleccionado">
+                                <Label layoutX="552.0" layoutY="104.0" prefHeight="32.0" prefWidth="221.0" text="Alumno Seleccionado">
                                     <font>
                                         <Font size="20.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="375.0" layoutY="180.0" prefHeight="32.0" prefWidth="69.0" text="Monto ">
+                                <Label layoutX="704.0" layoutY="174.0" prefHeight="32.0" prefWidth="69.0" text="Monto ">
                                     <font>
                                         <Font size="20.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="396.0" layoutY="244.0" prefHeight="32.0" prefWidth="48.0" text="Mes">
+                                <Label layoutX="725.0" layoutY="238.0" prefHeight="32.0" prefWidth="48.0" text="Mes">
                                     <font>
                                         <Font size="20.0" />
                                     </font>
                                 </Label>
-                                <ComboBox fx:id="comboMes" layoutX="484.0" layoutY="241.0" prefHeight="39.0" prefWidth="236.0" />
-                                <ComboBox fx:id="comboConcepto" layoutX="484.0" layoutY="364.0" prefHeight="39.0" prefWidth="236.0" />
-                                <TextField fx:id="textoAlumnoSeleccionado" editable="false" layoutX="484.0" layoutY="105.0" opacity="0.7" prefHeight="43.0" prefWidth="236.0" />
-                                <TextField fx:id="textoMonto" layoutX="484.0" layoutY="175.0" opacity="0.7" prefHeight="43.0" prefWidth="236.0" />
-                                <Label layoutX="356.0" layoutY="368.0" prefHeight="32.0" prefWidth="108.0" text="Concepto">
+                                <ComboBox fx:id="comboMes" layoutX="813.0" layoutY="235.0" prefHeight="39.0" prefWidth="236.0" />
+                                <ComboBox fx:id="comboConcepto" layoutX="813.0" layoutY="358.0" prefHeight="39.0" prefWidth="236.0" />
+                                <TextField fx:id="textoAlumnoSeleccionado" editable="false" layoutX="813.0" layoutY="99.0" opacity="0.7" prefHeight="43.0" prefWidth="236.0" />
+                                <TextField fx:id="textoMonto" layoutX="813.0" layoutY="169.0" opacity="0.7" prefHeight="43.0" prefWidth="236.0" />
+                                <Label layoutX="685.0" layoutY="362.0" prefHeight="32.0" prefWidth="108.0" text="Concepto">
                                     <font>
                                         <Font size="20.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="395.0" layoutY="303.0" prefHeight="32.0" prefWidth="50.0" text="Año">
+                                <Label layoutX="724.0" layoutY="297.0" prefHeight="32.0" prefWidth="50.0" text="Año">
                                     <font>
                                         <Font size="20.0" />
                                     </font>
                                 </Label>
-                                <ComboBox fx:id="comboAnio" layoutX="484.0" layoutY="299.0" prefHeight="39.0" prefWidth="236.0" />
+                                <ComboBox fx:id="comboAnio" layoutX="813.0" layoutY="293.0" prefHeight="39.0" prefWidth="236.0" />
                             </children>
                         </AnchorPane>
                     </content>
                 </Tab>
             </tabs>
         </TabPane>
-        <TextField fx:id="textoNombre" layoutX="241.0" layoutY="37.0" opacity="0.7" prefHeight="43.0" prefWidth="236.0" />
-        <TextField fx:id="textoId" layoutX="241.0" layoutY="116.0" opacity="0.7" prefHeight="43.0" prefWidth="236.0" />
-        <Label layoutX="110.0" layoutY="42.0" prefHeight="32.0" prefWidth="108.0" text="Nombre">
+        <TextField fx:id="textoNombre" layoutX="385.0" layoutY="38.0" opacity="0.7" prefHeight="43.0" prefWidth="236.0" />
+        <TextField fx:id="textoId" layoutX="385.0" layoutY="117.0" opacity="0.7" prefHeight="43.0" prefWidth="236.0" />
+        <Label layoutX="254.0" layoutY="43.0" prefHeight="32.0" prefWidth="108.0" text="Nombre">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label layoutX="149.0" layoutY="116.0" prefHeight="43.0" prefWidth="69.0" text="Id">
+        <Label layoutX="293.0" layoutY="117.0" prefHeight="43.0" prefWidth="69.0" text="Id">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Button layoutX="31.0" layoutY="194.0" mnemonicParsing="false" onAction="#buscarAlumnos" prefHeight="43.0" prefWidth="236.0" text="Buscar" />
-        <Button layoutX="343.0" layoutY="194.0" mnemonicParsing="false" onAction="#volverAlInicio" prefHeight="43.0" prefWidth="236.0" text="Volver" />
-        <Separator layoutX="603.0" layoutY="1.0" orientation="VERTICAL" prefHeight="271.0" prefWidth="13.0" />
-        <ImageView fx:id="imagenPagar" fitHeight="81.0" fitWidth="69.0" layoutX="851.0" layoutY="147.0" onMouseClicked="#pagarCuota" pickOnBounds="true" preserveRatio="true">
+        <Button layoutX="175.0" layoutY="195.0" mnemonicParsing="false" onAction="#buscarAlumnos" prefHeight="43.0" prefWidth="236.0" text="Buscar" />
+        <Button layoutX="487.0" layoutY="195.0" mnemonicParsing="false" onAction="#volverAlInicio" prefHeight="43.0" prefWidth="236.0" text="Volver" />
+        <Separator layoutX="888.0" layoutY="2.0" orientation="VERTICAL" prefHeight="271.0" prefWidth="13.0" />
+        <ImageView fx:id="imagenPagar" fitHeight="81.0" fitWidth="69.0" layoutX="1292.0" layoutY="143.0" onMouseClicked="#pagarCuota" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../imagenes/success.png" />
             </image>
@@ -98,17 +98,17 @@
                 <DropShadow />
             </effect>
         </ImageView>
-        <Label fx:id="etiquetaPagar" layoutX="647.0" layoutY="165.0" prefHeight="32.0" prefWidth="143.0" text="Pagar Cuota">
+        <Label fx:id="etiquetaPagar" layoutX="1088.0" layoutY="161.0" prefHeight="32.0" prefWidth="143.0" text="Pagar Cuota">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label layoutX="624.0" layoutY="64.0" prefHeight="32.0" prefWidth="202.0" text="Seleccionar Alumno">
+        <Label layoutX="1065.0" layoutY="60.0" prefHeight="32.0" prefWidth="202.0" text="Seleccionar Alumno">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <ImageView fitHeight="81.0" fitWidth="69.0" layoutX="851.0" layoutY="46.0" onMouseClicked="#seleccionarAlumno" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="81.0" fitWidth="69.0" layoutX="1292.0" layoutY="42.0" onMouseClicked="#seleccionarAlumno" pickOnBounds="true" preserveRatio="true">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>

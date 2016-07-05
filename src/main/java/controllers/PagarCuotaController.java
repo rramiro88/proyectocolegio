@@ -38,6 +38,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import logica.Logica;
 import screensframework.ScreensController;
 
@@ -260,6 +261,7 @@ public class PagarCuotaController implements Initializable, screensframework.Con
             //pago.setAlumno(alumnoPagador);
             //logica.guardarPago(pago);
             Alert dialogoConfirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+            dialogoConfirmacion.initModality(Modality.WINDOW_MODAL);
             dialogoConfirmacion.setTitle("Confirmar Pago");
             dialogoConfirmacion.setContentText("¿Está seguro que desea registrar este pago?");
 
@@ -270,6 +272,7 @@ public class PagarCuotaController implements Initializable, screensframework.Con
                     && logica.actualizarAlumno(alumnoPagador)) {
 
                 Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
+                dialogo.initModality(Modality.WINDOW_MODAL);
                 dialogo.setHeaderText("Informacion");
                 dialogo.setContentText("Colaboracion registrada correctamente.");
                 dialogo.show();
@@ -341,7 +344,7 @@ public class PagarCuotaController implements Initializable, screensframework.Con
 
     public void print(final Node node) {
         Printer printer = Printer.getDefaultPrinter();
-        PageLayout pageLayout = printer.createPageLayout(Paper.A5, PageOrientation.PORTRAIT, Printer.MarginType.HARDWARE_MINIMUM);
+        PageLayout pageLayout = printer.createPageLayout(Paper.A4, PageOrientation.PORTRAIT, Printer.MarginType.HARDWARE_MINIMUM);
 
         PrinterJob job = PrinterJob.createPrinterJob();
 

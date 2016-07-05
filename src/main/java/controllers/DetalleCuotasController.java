@@ -30,6 +30,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import logica.Logica;
 import screensframework.ScreensController;
 
@@ -143,12 +144,13 @@ public class DetalleCuotasController implements Initializable, screensframework.
 
     public void print(final Node node) {
         Printer printer = Printer.getDefaultPrinter();
-        PageLayout pageLayout = printer.createPageLayout(Paper.A5, PageOrientation.LANDSCAPE, Printer.MarginType.HARDWARE_MINIMUM);
+        PageLayout pageLayout = printer.createPageLayout(Paper.A4, PageOrientation.PORTRAIT, Printer.MarginType.HARDWARE_MINIMUM);
 
         PrinterJob job = PrinterJob.createPrinterJob();
 
         job.setPrinter(printer);
-        //job.showPageSetupDialog(null);
+        
+        job.showPageSetupDialog(null);
         //job.showPrintDialog(null);
         job.getJobSettings().setJobName("Recibo");
 
@@ -190,6 +192,7 @@ public class DetalleCuotasController implements Initializable, screensframework.
             print(panelImpresion);
         } catch (Exception e) {
             Alert dialogo = new Alert(Alert.AlertType.ERROR);
+            dialogo.initModality(Modality.WINDOW_MODAL);
             dialogo.setHeaderText("Error");
             dialogo.setContentText("No se puede imprimir. Verificar impresora.");
             dialogo.show();

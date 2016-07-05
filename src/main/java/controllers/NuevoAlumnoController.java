@@ -21,6 +21,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.ToggleGroup;
+import javafx.stage.Modality;
 import logica.Logica;
 import screensframework.ScreensController;
 
@@ -122,6 +123,7 @@ public class NuevoAlumnoController implements Initializable, screensframework.Co
 
         if ("".equals(textoNombreYApellido.getText().trim())) {
             TextInputDialog dialog = new TextInputDialog("Nombre y Apellido");
+            dialog.initModality(Modality.WINDOW_MODAL);
             dialog.setTitle("Complete el nombre");
             dialog.setHeaderText("Dato faltante");
             dialog.setContentText("Ingrese el nombre del alumno");
@@ -139,6 +141,7 @@ public class NuevoAlumnoController implements Initializable, screensframework.Co
             if (logica.guardarAlumno(alumnoACrear)) {
 
                 Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
+                dialogo.initModality(Modality.WINDOW_MODAL);
                 dialogo.setHeaderText("Informacion");
                 dialogo.setContentText("Alumno creado con exito");
                 dialogo.show();
@@ -146,6 +149,7 @@ public class NuevoAlumnoController implements Initializable, screensframework.Co
 
             }else {
                 Alert dialogo = new Alert(Alert.AlertType.ERROR);
+                dialogo.initModality(Modality.WINDOW_MODAL);
                 dialogo.setHeaderText("Informacion");
                 dialogo.setContentText("No se pudo guardar el alumno");
                 dialogo.show();
