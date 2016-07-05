@@ -10,9 +10,11 @@ import com.mycompany.proyectocolegio.MainApp;
 import screensframework.ScreensController;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -38,6 +40,10 @@ public class EscritorioController implements Initializable, ControlledScreen{
     private TabPane AnchorPane;
     @FXML
     private ImageView imagenSalir;
+    @FXML
+    private TextField textoTotalMes;
+    @FXML
+    private TextField textoTotalAnio;
 
     /**
      * Initializes the controller class.
@@ -83,6 +89,17 @@ public class EscritorioController implements Initializable, ControlledScreen{
     private void salir(MouseEvent event) {
 
         System.exit(0);
+    }
+
+    @FXML
+    private void calcularTotales(ActionEvent event) {
+        
+        String anio = "2016";
+        String mes = "Junio";
+        
+        
+        
+        
     }
 
     

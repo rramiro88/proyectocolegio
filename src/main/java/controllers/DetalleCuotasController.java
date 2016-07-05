@@ -150,7 +150,7 @@ public class DetalleCuotasController implements Initializable, screensframework.
 
         job.setPrinter(printer);
         
-        job.showPageSetupDialog(null);
+        //job.showPageSetupDialog(null);
         //job.showPrintDialog(null);
         job.getJobSettings().setJobName("Recibo");
 

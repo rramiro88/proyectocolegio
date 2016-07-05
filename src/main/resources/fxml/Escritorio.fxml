@@ -101,7 +101,14 @@
           </Tab>
           <Tab text="Administracion">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="textoTotalMes" layoutX="733.0" layoutY="211.0" prefHeight="49.0" prefWidth="373.0" />
+                        <TextField fx:id="textoTotalAnio" layoutX="733.0" layoutY="314.0" prefHeight="49.0" prefWidth="373.0" />
+                        <Label layoutX="494.0" layoutY="210.0" prefHeight="51.0" prefWidth="192.0" text="Total recaudado en el mes" />
+                        <Button layoutX="645.0" layoutY="516.0" mnemonicParsing="false" onAction="#calcularTotales" prefHeight="62.0" prefWidth="296.0" text="Calcular" />
+                        <Label layoutX="494.0" layoutY="313.0" prefHeight="51.0" prefWidth="192.0" text="Total recaudado en el año" />
+                     </children></AnchorPane>
             </content>
           </Tab>
         </tabs>
