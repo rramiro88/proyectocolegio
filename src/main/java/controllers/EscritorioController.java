@@ -13,6 +13,8 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
@@ -44,6 +46,14 @@ public class EscritorioController implements Initializable, ControlledScreen{
     private TextField textoTotalMes;
     @FXML
     private TextField textoTotalAnio;
+    @FXML
+    private TextField textoTotalDia;
+    @FXML
+    private DatePicker pickerFecha;
+    @FXML
+    private ComboBox<?> comboMes;
+    @FXML
+    private ComboBox<?> comboAnio;
 
     /**
      * Initializes the controller class.
