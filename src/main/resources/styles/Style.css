@@ -17,11 +17,13 @@ and open the template in the editor.
 .button{
 
     -fx-background-color: linear-gradient(to bottom,white,cornflowerblue);
+    -fx-effect: dropshadow(three-pass-box, black, 10,0,0,0);
 
 }
 
 .button:hover{
-
+   
+    -fx-effect: dropshadow(three-pass-box, blueviolet, 10,0,0,0);
 
 }
 

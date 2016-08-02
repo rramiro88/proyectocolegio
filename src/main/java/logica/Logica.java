@@ -8,6 +8,7 @@ package logica;
 import entidades.Alumno;
 import java.util.List;
 import dao.DAOGeneral;
+import java.time.LocalDate;
 import javafx.collections.FXCollections;
 
 /**
@@ -58,5 +59,9 @@ public class Logica {
 
     public boolean guardarAlumno(Alumno alumnoACrear) {
         return dao.guardarAlumno(alumnoACrear);
+    }
+
+    public String obtenerTotalDia(LocalDate dia) {
+        return dao.obtenerTotalDia(dia);
     }
 }

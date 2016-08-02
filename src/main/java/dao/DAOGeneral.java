@@ -6,6 +6,7 @@
 package dao;
 
 import entidades.Alumno;
+import java.time.LocalDate;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -174,5 +175,27 @@ public class DAOGeneral {
 //
 //        return respuesta;
 //    }
+
+    public String obtenerTotalDia(LocalDate dia) {
+        String respuesta = null;
+
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session s = sf.openSession();
+        s.beginTransaction();
+
+        try {
+
+            List<String> lista=s.createSQLQuery("select sum(monto) from Pago where fechaDePago="+dia).list();
+            respuesta = lista.get(0);
+
+        } catch (Exception e) {
+            System.out.println("No se pudo obtener el total del dia");
+        } finally {
+            s.close();
+        }
+
+        System.out.println(respuesta);
+        return respuesta;
+    }
 
 }

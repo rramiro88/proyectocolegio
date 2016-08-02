@@ -9,17 +9,23 @@ package controllers;
 import com.mycompany.proyectocolegio.MainApp;
 import screensframework.ScreensController;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import logica.Logica;
 import screensframework.ControlledScreen;
 
 /**
@@ -30,6 +36,8 @@ import screensframework.ControlledScreen;
 public class EscritorioController implements Initializable, ControlledScreen{
     
     ScreensController myController;
+    
+    ToggleGroup tg;
     @FXML
     private ImageView imagenNuevoAlumno;
     @FXML
@@ -51,9 +59,13 @@ public class EscritorioController implements Initializable, ControlledScreen{
     @FXML
     private DatePicker pickerFecha;
     @FXML
-    private ComboBox<?> comboMes;
+    private ComboBox<String> comboMes;
     @FXML
-    private ComboBox<?> comboAnio;
+    private ComboBox<String> comboAnio;
+    @FXML
+    private RadioButton radioManana;
+    @FXML
+    private RadioButton radioTarde;
 
     /**
      * Initializes the controller class.
@@ -66,6 +78,49 @@ public class EscritorioController implements Initializable, ControlledScreen{
         Tooltip.install(imagenPagarCuota, new Tooltip("Pagar una cuota"));
         Tooltip.install(imagenMopdificarAlumno, new Tooltip("Modificar los datos de un alumno"));
         Tooltip.install(imagenSalir, new Tooltip("Salir de la aplicacion"));
+        
+        //seteo de radioButtons
+        tg = new ToggleGroup();
+        radioManana.setToggleGroup(tg);
+        radioTarde.setToggleGroup(tg);
+        
+        ObservableList<String> anios
+                = FXCollections.observableArrayList(
+                        "2016",
+                        "2017",
+                        "2018",
+                        "2019",
+                        "2020",
+                        "2021",
+                        "2022",
+                        "2023",
+                        "2024",
+                        "2025",
+                        "2026");
+
+        comboAnio.setItems(anios);
+        comboAnio.setValue(String.valueOf(LocalDate.now().getYear()));
+
+        ObservableList<String> meses
+                = FXCollections.observableArrayList(
+                        "Enero",
+                        "Febrero",
+                        "Marzo",
+                        "Abril",
+                        "Mayo",
+                        "Junio",
+                        "Julio",
+                        "Agosto",
+                        "Septiembre",
+                        "Octubre",
+                        "Noviembre",
+                        "Diciembre"
+                );
+
+        comboMes.setItems(meses);
+        comboMes.setValue(meses.get(LocalDate.now().getMonthValue() - 1));
+        
+        pickerFecha.setValue(LocalDate.now());
         
     }    
 
@@ -104,8 +159,9 @@ public class EscritorioController implements Initializable, ControlledScreen{
     @FXML
     private void calcularTotales(ActionEvent event) {
         
-        String anio = "2016";
-        String mes = "Junio";
+        
+        Logica logica = new Logica();
+        textoTotalDia.setText(logica.obtenerTotalDia(pickerFecha.getValue()));
         
         
         
