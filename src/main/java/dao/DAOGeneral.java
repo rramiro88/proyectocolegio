@@ -185,11 +185,12 @@ public class DAOGeneral {
 
         try {
 
-            List<String> lista=s.createSQLQuery("select sum(monto) from Pago where fechaDePago="+dia).list();
-            respuesta = lista.get(0);
+            List<Double> lista=s.createSQLQuery("select sum(monto) from Pago where fechaDePago=\'"+dia+"\'").list();
+            respuesta = lista.get(0).toString();
 
         } catch (Exception e) {
             System.out.println("No se pudo obtener el total del dia");
+            e.printStackTrace();
         } finally {
             s.close();
         }

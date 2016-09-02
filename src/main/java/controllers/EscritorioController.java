@@ -163,6 +163,8 @@ public class EscritorioController implements Initializable, ControlledScreen{
         Logica logica = new Logica();
         textoTotalDia.setText(logica.obtenerTotalDia(pickerFecha.getValue()));
         
+        System.out.println(pickerFecha.getValue());
+        
         
         
         
