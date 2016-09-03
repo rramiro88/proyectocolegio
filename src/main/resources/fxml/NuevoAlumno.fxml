@@ -10,29 +10,29 @@
 
 <AnchorPane id="AnchorPane" prefHeight="900.0" prefWidth="1600.0" stylesheets="@../styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NuevoAlumnoController">
    <children>
-      <Label layoutX="523.0" layoutY="243.0" prefHeight="34.0" prefWidth="161.0" text="Nombre y Apellido">
+      <Label layoutX="521.0" layoutY="123.0" prefHeight="34.0" prefWidth="161.0" text="Nombre y Apellido">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="textoNombreYApellido" layoutX="700.0" layoutY="239.0" prefHeight="42.0" prefWidth="330.0" />
-      <Label layoutX="637.0" layoutY="316.0" prefHeight="34.0" prefWidth="47.0" text="Nivel">
+      <TextField fx:id="textoNombreYApellido" layoutX="698.0" layoutY="119.0" prefHeight="42.0" prefWidth="330.0" />
+      <Label layoutX="635.0" layoutY="196.0" prefHeight="34.0" prefWidth="47.0" text="Nivel">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Label layoutX="549.0" layoutY="394.0" prefHeight="34.0" prefWidth="135.0" text="Division / Curso">
+      <Label layoutX="547.0" layoutY="274.0" prefHeight="34.0" prefWidth="135.0" text="Division / Curso">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Label layoutX="631.0" layoutY="479.0" prefHeight="34.0" prefWidth="53.0" text="Turno">
+      <Label layoutX="629.0" layoutY="359.0" prefHeight="34.0" prefWidth="53.0" text="Turno">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <RadioButton fx:id="radioManana" layoutX="746.0" layoutY="487.0" mnemonicParsing="false" text="Mañana" />
-      <RadioButton fx:id="radioTarde" layoutX="894.0" layoutY="487.0" mnemonicParsing="false" text="Tarde" />
+      <RadioButton fx:id="radioManana" layoutX="744.0" layoutY="367.0" mnemonicParsing="false" text="Mañana" />
+      <RadioButton fx:id="radioTarde" layoutX="892.0" layoutY="367.0" mnemonicParsing="false" text="Tarde" />
       <Button layoutX="582.0" layoutY="607.0" mnemonicParsing="false" onAction="#crearAlumno" prefHeight="54.0" prefWidth="213.0" text="Crear Alumno">
          <font>
             <Font size="15.0" />
@@ -43,7 +43,19 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <ComboBox fx:id="comboNivel" layoutX="700.0" layoutY="312.0" prefHeight="42.0" prefWidth="330.0" promptText="Elija un valor" />
-      <ComboBox fx:id="comboDivision" layoutX="700.0" layoutY="390.0" prefHeight="42.0" prefWidth="330.0" promptText="Elija un valor" />
+      <ComboBox fx:id="comboNivel" layoutX="698.0" layoutY="192.0" prefHeight="42.0" prefWidth="330.0" promptText="Elija un valor" />
+      <ComboBox fx:id="comboDivision" layoutX="698.0" layoutY="270.0" prefHeight="42.0" prefWidth="330.0" promptText="Elija un valor" />
+      <Label layoutX="616.0" layoutY="433.0" prefHeight="34.0" prefWidth="76.0" text="Becado">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <CheckBox fx:id="checkBecado" layoutX="745.0" layoutY="441.0" mnemonicParsing="false" onAction="#habilitarCamposBeca" text="Si" />
+      <Label fx:id="etiquetaMontoBeca" layoutX="575.0" layoutY="507.0" prefHeight="34.0" prefWidth="108.0" text="Monto Beca" visible="false">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textoMontoBeca" layoutX="699.0" layoutY="503.0" prefHeight="42.0" prefWidth="330.0" visible="false" />
    </children>
 </AnchorPane>

@@ -24,6 +24,8 @@ public class MainApp extends Application {
     public static String pagarCuotaArchivoFXML = "/fxml/PagarCuota.fxml";
     public static String detalleCuota = "detallecuota";
     public static String detalleCuotaArchivoFXML = "/fxml/DetalleCuotas.fxml";
+    public static String calcularDeuda = "calculardeuda";
+    public static String calcularDeudaArchivoFXML = "/fxml/CalcularDeuda.fxml";
     
     public static Alumno alumnoAEditar;
 
@@ -37,6 +39,7 @@ public class MainApp extends Application {
         mainContainer.loadScreen(editarAlumno, editarAlumnoArchivoFXML);
         mainContainer.loadScreen(pagarCuota, pagarCuotaArchivoFXML);
         mainContainer.loadScreen(detalleCuota, detalleCuotaArchivoFXML);
+        mainContainer.loadScreen(calcularDeuda, calcularDeudaArchivoFXML);
 
         mainContainer.setScreen(pantallaPrincipal);
 

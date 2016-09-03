@@ -8,6 +8,8 @@ package controllers;
 import com.mycompany.proyectocolegio.MainApp;
 import entidades.Alumno;
 import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -16,7 +18,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
@@ -45,6 +49,12 @@ public class NuevoAlumnoController implements Initializable, screensframework.Co
     private ComboBox<String> comboDivision;
     @FXML
     private TextField textoNombreYApellido;
+    @FXML
+    private CheckBox checkBecado;
+    @FXML
+    private Label etiquetaMontoBeca;
+    @FXML
+    private TextField textoMontoBeca;
 
     /**
      * Initializes the controller class.
@@ -59,7 +69,6 @@ public class NuevoAlumnoController implements Initializable, screensframework.Co
         tg = new ToggleGroup();
         radioManana.setToggleGroup(tg);
         radioTarde.setToggleGroup(tg);
-        
 
         //seteo de comboBoxes
         ObservableList<String> niveles
@@ -80,7 +89,6 @@ public class NuevoAlumnoController implements Initializable, screensframework.Co
                 );
 
         comboNivel.setItems(niveles);
-       
 
         ObservableList<String> divisiones
                 = FXCollections.observableArrayList(
@@ -91,8 +99,7 @@ public class NuevoAlumnoController implements Initializable, screensframework.Co
                         "B"
                 );
         comboDivision.setItems(divisiones);
-        
-        
+
         this.restablecerCampos();
     }
 
@@ -114,6 +121,13 @@ public class NuevoAlumnoController implements Initializable, screensframework.Co
         Alumno alumnoACrear = new Alumno();
         alumnoACrear.setDivision(comboDivision.getValue());
         alumnoACrear.setNivel(comboNivel.getValue());
+        alumnoACrear.setBecado(checkBecado.isSelected());
+        
+        alumnoACrear.setFechaDeAlta(Date.valueOf(LocalDate.now()));
+        
+        if(checkBecado.isSelected()){
+            alumnoACrear.setMontoBeca(Integer.parseInt(textoMontoBeca.getText()));
+        }
 
         if (radioManana.isSelected()) {
             alumnoACrear.setTurno("Mañana");
@@ -145,9 +159,8 @@ public class NuevoAlumnoController implements Initializable, screensframework.Co
                 dialogo.setHeaderText("Informacion");
                 dialogo.setContentText("Alumno creado con exito");
                 dialogo.show();
-                
 
-            }else {
+            } else {
                 Alert dialogo = new Alert(Alert.AlertType.ERROR);
                 dialogo.initModality(Modality.WINDOW_MODAL);
                 dialogo.setHeaderText("Informacion");
@@ -158,14 +171,26 @@ public class NuevoAlumnoController implements Initializable, screensframework.Co
         }
 
     }
-    
-    private void restablecerCampos(){
-        
-         comboNivel.setValue("1° Grado");
-         comboDivision.setValue("Rojo");
-         textoNombreYApellido.setText("");
-         radioManana.setSelected(true);
-         
+
+    private void restablecerCampos() {
+
+        comboNivel.setValue("1° Grado");
+        comboDivision.setValue("Rojo");
+        textoNombreYApellido.setText("");
+        radioManana.setSelected(true);
+        checkBecado.setSelected(false);
+
+        textoMontoBeca.setVisible(false);
+        etiquetaMontoBeca.setVisible(false);
+
+    }
+
+    @FXML
+    private void habilitarCamposBeca(ActionEvent event) {
+
+        textoMontoBeca.setVisible(!textoMontoBeca.isVisible());
+        etiquetaMontoBeca.setVisible(!etiquetaMontoBeca.isVisible());
+
     }
 
 }

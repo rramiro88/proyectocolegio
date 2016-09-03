@@ -7,6 +7,8 @@ package dao;
 
 import entidades.Alumno;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -186,7 +188,12 @@ public class DAOGeneral {
         try {
 
             List<Double> lista=s.createSQLQuery("select sum(monto) from Pago where fechaDePago=\'"+dia+"\'").list();
-            respuesta = lista.get(0).toString();
+            if(lista!=null && lista.size()>0 &&lista.get(0)!=null){
+                respuesta = lista.get(0).toString();
+            }else{
+                respuesta = "0";
+            }
+                
 
         } catch (Exception e) {
             System.out.println("No se pudo obtener el total del dia");
@@ -195,8 +202,95 @@ public class DAOGeneral {
             s.close();
         }
 
-        System.out.println(respuesta);
+        
         return respuesta;
+    }
+    
+    
+    public String obtenerTotalMes(int mes, int anio) {
+        
+     
+        String respuesta = null;
+
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session s = sf.openSession();
+        s.beginTransaction();
+
+        try {
+
+            List<Double> lista=s.createSQLQuery("select sum(monto) from Pago where MONTH(fechaDePago)="+mes+" and YEAR(fechaDePago)="+anio).list();
+            if(lista!=null && lista.size()>0 &&lista.get(0)!=null){
+                respuesta = lista.get(0).toString();
+            }else{
+                respuesta = "0";
+            }
+                
+
+        } catch (Exception e) {
+            System.out.println("No se pudo obtener el total del dia");
+            e.printStackTrace();
+        } finally {
+            s.close();
+        }
+
+        
+        return respuesta;
+    }
+
+    public String obtenerTotalAnio(String anio) {
+        
+        String respuesta = null;
+
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session s = sf.openSession();
+        s.beginTransaction();
+
+        try {
+
+            List<Double> lista=s.createSQLQuery("select sum(monto) from Pago where YEAR(fechaDePago)="+anio).list();
+            if(lista!=null && lista.size()>0 &&lista.get(0)!=null){
+                respuesta = lista.get(0).toString();
+            }else{
+                respuesta = "0";
+            }
+                
+
+        } catch (Exception e) {
+            System.out.println("No se pudo obtener el total del dia");
+            e.printStackTrace();
+        } finally {
+            s.close();
+        }
+
+        return respuesta;
+     
+    }
+    
+    
+    public List<Alumno> obtenerDeudores(Date inicio, Date fin){
+        /**
+         * completar
+         */
+        
+        List<Alumno> deudores = new ArrayList<>();
+        List<Alumno> todos = obtenerTodosAlumnos();
+        
+        for (Alumno alumno : todos) {
+            
+            
+            
+            
+            
+            
+            
+        }
+        
+        
+        
+        
+        
+        return deudores;
+        
     }
 
 }

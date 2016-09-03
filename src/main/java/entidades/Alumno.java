@@ -6,6 +6,7 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -14,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -30,7 +32,13 @@ public class Alumno implements Serializable {
     private String division;
     private String turno;
     private String ultimoPago;
+    
+    private Boolean becado;
 
+    private int montoBeca;
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date fechaDeAlta;
    
   
     public void obtenerUltimoPago(){
@@ -46,6 +54,43 @@ public class Alumno implements Serializable {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Pago> pagos;
 
+    
+    
+    public Alumno(){
+        becado=false;
+    }
+
+    public Date getFechaDeAlta() {
+        return fechaDeAlta;
+    }
+
+    public void setFechaDeAlta(Date fechaDeAlta) {
+        this.fechaDeAlta = fechaDeAlta;
+    }
+    
+    
+    
+    
+    public int getMontoBeca() {
+        return montoBeca;
+    }
+
+    public void setMontoBeca(int montoBeca) {
+        this.montoBeca = montoBeca;
+    }
+
+    
+    
+    public Boolean getBecado() {
+        return becado;
+    }
+
+    public void setBecado(Boolean becado) {
+        this.becado = becado;
+    }
+
+    
+    
     public String getNombreYApellido() {
         return nombreYApellido;
     }

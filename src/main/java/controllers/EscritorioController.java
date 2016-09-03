@@ -66,6 +66,8 @@ public class EscritorioController implements Initializable, ControlledScreen{
     private RadioButton radioManana;
     @FXML
     private RadioButton radioTarde;
+    @FXML
+    private ImageView imagenNuevoAlumno1;
 
     /**
      * Initializes the controller class.
@@ -163,8 +165,22 @@ public class EscritorioController implements Initializable, ControlledScreen{
         Logica logica = new Logica();
         textoTotalDia.setText(logica.obtenerTotalDia(pickerFecha.getValue()));
         
-        System.out.println(pickerFecha.getValue());
         
+        textoTotalMes.setText(logica.obtenerTotalMes(comboMes.getValue(),comboAnio.getValue()));
+        
+        textoTotalAnio.setText(logica.obtenerTotalAnio(comboAnio.getValue()));
+        
+        
+        
+        
+        
+        
+    }
+
+    @FXML
+    private void calcularDeuda(MouseEvent event) {
+        
+        myController.setScreen(MainApp.calcularDeuda);
         
         
         

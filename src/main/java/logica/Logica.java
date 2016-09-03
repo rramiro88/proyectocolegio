@@ -64,4 +64,71 @@ public class Logica {
     public String obtenerTotalDia(LocalDate dia) {
         return dao.obtenerTotalDia(dia);
     }
+
+    public String obtenerTotalMes(String mes, String anio) {
+        
+        int mesEntero = 0;
+        
+        
+        switch(mes){
+            case "Enero": {
+                mesEntero = 1;
+                break;
+            }
+            case "Febrero": {
+                mesEntero = 2;
+                break;
+            }
+            case "Marzo": {
+                mesEntero = 3;
+                break;
+            }
+            case "Abril": {
+                mesEntero = 4;
+                break;
+            }
+            case "Mayo": {
+                mesEntero = 5;
+                break;
+            }
+            case "Junio": {
+                mesEntero = 6;
+                break;
+            }
+            case "Julio": {
+                mesEntero = 7;
+                break;
+            }
+            case "Agosto": {
+                mesEntero = 8;
+                break;
+            }
+            case "Septiembre": {
+                mesEntero = 9;
+                break;
+            }
+            case "Octubre": {
+                mesEntero = 10;
+                break;
+            }
+            case "Noviembre": {
+                mesEntero = 11;
+                break;
+            }
+            case "Diciembre": {
+                mesEntero = 12;
+                break;
+            }
+           
+        }
+        
+        
+        
+        
+        return dao.obtenerTotalMes(mesEntero,Integer.parseInt(anio));
+    }
+
+    public String obtenerTotalAnio(String anio) {
+        return dao.obtenerTotalAnio(anio);
+    }
 }
