@@ -8,7 +8,11 @@ package logica;
 import entidades.Alumno;
 import java.util.List;
 import dao.DAOGeneral;
+import entidades.Pago;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import javafx.collections.FXCollections;
 
 /**
@@ -25,6 +29,45 @@ public class Logica {
 
     }
 
+    public List<Alumno> obtenerDeudores(String nombre, String id, String nivel, String division) {
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        int mesActual = cal.get(Calendar.MONTH);
+        int anioActual = cal.get(Calendar.YEAR);
+        List<Alumno> seleccionados;
+        if ("".equals(nivel) || "".equals(division)) {
+            seleccionados = obtenerAlumnos(nombre, id);
+        } else {
+            seleccionados = dao.obtenerAlumnosPorNivelYDivision(nivel, division);
+        }
+
+        List<Alumno> deudores = new ArrayList<>();
+
+        for (Alumno seleccionado : seleccionados) {
+
+            if (seleccionado.getPagos().size() > 0) {
+                Pago ultimoPago = seleccionado.getPagos().get(seleccionado.getPagos().size() - 1);
+                int anioUltimoPago = Integer.parseInt(ultimoPago.getAnio());
+                int mesUltimoPago = mesAEntero(ultimoPago.getMes());
+
+                int aniosAdeudados = anioActual - anioUltimoPago;
+                int mesesAdeudados = mesActual - mesUltimoPago;
+
+                if ((mesesAdeudados > 0) || (aniosAdeudados > 0)) {
+
+                    seleccionado.setDeuda(aniosAdeudados + " años y " + mesesAdeudados + " meses.");
+                    deudores.add(seleccionado);
+
+                }
+            }
+
+        }
+
+        return deudores;
+
+    }
+
     public List<Alumno> obtenerAlumnos(String nombre, String id) {
         int idEntero;
         Alumno a;
@@ -38,11 +81,10 @@ public class Logica {
                 return FXCollections.observableArrayList(a);
 
             }
-        }else{
+        } else {
             return dao.obtenerAlumnosPorNombre(nombre);
         }
 
-        
     }
 
     public boolean actualizarAlumno(Alumno alumnoAActualizar) {
@@ -53,10 +95,6 @@ public class Logica {
         dao.eliminarAlumno(alumno);
     }
 
-//    public void guardarPago(Pago pago) {
-//        dao.guardarPago(pago);
-//    }
-
     public boolean guardarAlumno(Alumno alumnoACrear) {
         return dao.guardarAlumno(alumnoACrear);
     }
@@ -66,11 +104,16 @@ public class Logica {
     }
 
     public String obtenerTotalMes(String mes, String anio) {
-        
-        int mesEntero = 0;
-        
-        
-        switch(mes){
+
+        int mesEntero = mesAEntero(mes);
+
+        return dao.obtenerTotalMes(mesEntero, Integer.parseInt(anio));
+    }
+
+    int mesAEntero(String mes) {
+        int mesEntero = -1;
+
+        switch (mes) {
             case "Enero": {
                 mesEntero = 1;
                 break;
@@ -119,13 +162,10 @@ public class Logica {
                 mesEntero = 12;
                 break;
             }
-           
+
         }
-        
-        
-        
-        
-        return dao.obtenerTotalMes(mesEntero,Integer.parseInt(anio));
+
+        return mesEntero;
     }
 
     public String obtenerTotalAnio(String anio) {

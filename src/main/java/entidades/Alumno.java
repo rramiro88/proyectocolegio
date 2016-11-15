@@ -32,6 +32,7 @@ public class Alumno implements Serializable {
     private String division;
     private String turno;
     private String ultimoPago;
+    private String deuda;
     
     private Boolean becado;
 
@@ -44,6 +45,7 @@ public class Alumno implements Serializable {
     public void obtenerUltimoPago(){
         
         Pago ultimo;
+        
         if(!pagos.isEmpty()){
             ultimo = pagos.get(pagos.size()-1);
             ultimoPago = ultimo.getMes() + " " + ultimo.getAnio();            
@@ -66,6 +68,14 @@ public class Alumno implements Serializable {
 
     public void setFechaDeAlta(Date fechaDeAlta) {
         this.fechaDeAlta = fechaDeAlta;
+    }
+
+    public String getDeuda() {
+        return deuda;
+    }
+
+    public void setDeuda(String deuda) {
+        this.deuda = deuda;
     }
     
     

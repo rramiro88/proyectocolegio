@@ -36,8 +36,7 @@ import screensframework.ControlledScreen;
 public class EscritorioController implements Initializable, ControlledScreen{
     
     ScreensController myController;
-    
-    ToggleGroup tg;
+  
     @FXML
     private ImageView imagenNuevoAlumno;
     @FXML
@@ -62,10 +61,7 @@ public class EscritorioController implements Initializable, ControlledScreen{
     private ComboBox<String> comboMes;
     @FXML
     private ComboBox<String> comboAnio;
-    @FXML
-    private RadioButton radioManana;
-    @FXML
-    private RadioButton radioTarde;
+    
     @FXML
     private ImageView imagenNuevoAlumno1;
 
@@ -81,10 +77,7 @@ public class EscritorioController implements Initializable, ControlledScreen{
         Tooltip.install(imagenMopdificarAlumno, new Tooltip("Modificar los datos de un alumno"));
         Tooltip.install(imagenSalir, new Tooltip("Salir de la aplicacion"));
         
-        //seteo de radioButtons
-        tg = new ToggleGroup();
-        radioManana.setToggleGroup(tg);
-        radioTarde.setToggleGroup(tg);
+       
         
         ObservableList<String> anios
                 = FXCollections.observableArrayList(

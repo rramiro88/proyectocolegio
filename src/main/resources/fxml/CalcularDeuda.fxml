@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import java.util.*?>
@@ -7,36 +10,54 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="900.0" prefWidth="1600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controllers.CalcularDeudaController">
-    <stylesheets>
-        <URL value="@/styles/Style.css" />
-    </stylesheets>
+<AnchorPane id="AnchorPane" prefHeight="900.0" prefWidth="1600.0" styleClass="mainFxmlClass" stylesheets="@../styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CalcularDeudaController">
    <children>
-      <TabPane layoutX="14.0" layoutY="236.0" prefHeight="664.0" prefWidth="1600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="236.0">
+      <TabPane layoutX="14.0" layoutY="297.0" prefHeight="603.0" prefWidth="1600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="297.0">
         <tabs>
           <Tab text="Deudores">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="130.0" layoutY="101.0" prefHeight="631.0" prefWidth="1600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="tablaAlumnos" layoutX="130.0" layoutY="101.0" prefHeight="631.0" prefWidth="1600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="Nombre" />
-                              <TableColumn prefWidth="127.0" text="Total adeudado" />
-                              <TableColumn prefWidth="127.0" text="Curso" />
-                              <TableColumn prefWidth="127.0" text="Division" />
-                              <TableColumn prefWidth="127.0" text="Codigo " />
+                            <TableColumn fx:id="columnaNombre" prefWidth="347.0" text="Nombre" />
+                              <TableColumn fx:id="columnaDeuda" prefWidth="350.0" text="Total adeudado" />
+                              <TableColumn fx:id="columnaNivel" prefWidth="123.0" text="Curso" />
+                              <TableColumn fx:id="columnaDivision" prefWidth="167.0" text="Division" />
+                              <TableColumn fx:id="columnaCodigo" prefWidth="218.0" text="Codigo " />
                           </columns>
                         </TableView>
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="Detalle">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </Tab>
         </tabs>
       </TabPane>
+      <Button layoutX="838.0" layoutY="210.0" mnemonicParsing="false" onAction="#volverAlInicio" prefHeight="43.0" prefWidth="236.0" text="Volver" />
+      <Button layoutX="526.0" layoutY="210.0" mnemonicParsing="false" onAction="#buscarAlumnosDeudores" prefHeight="43.0" prefWidth="236.0" text="Buscar" />
+      <Label layoutX="345.0" layoutY="128.0" prefHeight="43.0" prefWidth="69.0" text="Id">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="306.0" layoutY="54.0" prefHeight="32.0" prefWidth="108.0" text="Nombre">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textoId" layoutX="437.0" layoutY="128.0" opacity="0.7" prefHeight="43.0" prefWidth="236.0" />
+      <TextField fx:id="textoNombre" layoutX="437.0" layoutY="49.0" opacity="0.7" prefHeight="43.0" prefWidth="236.0" />
+      <Label layoutX="762.0" layoutY="55.0" prefHeight="32.0" prefWidth="108.0" text="Nivel">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="comboNivel" layoutX="879.0" layoutY="50.0" prefHeight="43.0" prefWidth="215.0" />
+      <ComboBox fx:id="comboDivision" layoutX="879.0" layoutY="128.0" prefHeight="43.0" prefWidth="215.0" />
+      <Label layoutX="753.0" layoutY="134.0" prefHeight="32.0" prefWidth="108.0" text="Division">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

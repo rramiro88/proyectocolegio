@@ -158,6 +158,8 @@ public class EditarAlumnoController implements Initializable, screensframework.C
     private void cargarCampos(ActionEvent event) {
          if (MainApp.alumnoAEditar != null) {
             comboNivel.setValue(MainApp.alumnoAEditar.getNivel());
+            textoNombreYApellido.setText(MainApp.alumnoAEditar.getNombreYApellido());
+            comboDivision.setValue(MainApp.alumnoAEditar.getDivision());
 
             if (MainApp.alumnoAEditar.getTurno().equals("Tarde")) {
                 radioTarde.setSelected(true);
@@ -165,9 +167,9 @@ public class EditarAlumnoController implements Initializable, screensframework.C
                 radioManana.setSelected(true);
             }
 
-            comboDivision.setValue(MainApp.alumnoAEditar.getDivision());
+            
 
-            textoNombreYApellido.setText(MainApp.alumnoAEditar.getNombreYApellido());
+            
         } 
     }
 

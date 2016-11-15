@@ -86,6 +86,34 @@ public class DAOGeneral {
 
         return respuesta;
     }
+    
+    
+     public List<Alumno> obtenerAlumnosPorNivelYDivision(String nivel, String division) {
+        List<Alumno> respuesta;
+
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session s = sf.openSession();
+        s.beginTransaction();
+
+        
+//        Query consulta = s.createSQLQuery("select division, nivel, nombreYApellido, turno from Alumno where nombreYApellido like \"%" + nombre +"%\"");
+        Query consulta = s.createQuery("From Alumno where nivel like :parametroNivel and division like :parametroDivision" );
+        consulta.setParameter("parametroNivel","%"+ nivel +"%" );
+        consulta.setParameter("parametroDivision","%"+ division +"%" );
+        
+        respuesta = consulta.list();
+        
+        
+//        Criteria c = s.createCriteria(Alumno.class)
+//                .add(Restrictions.like("nombreYApellido", nombre, MatchMode.START));
+//        respuesta = c.list();
+
+        System.out.println("Alumnos que coinciden con la busqueda: " + respuesta.size());
+
+        s.close();
+
+        return respuesta;
+    }
 
     public Alumno obtenerAlumnosPorId(int id) {
         Alumno respuesta = null;
@@ -267,30 +295,11 @@ public class DAOGeneral {
     }
     
     
-    public List<Alumno> obtenerDeudores(Date inicio, Date fin){
-        /**
-         * completar
-         */
-        
-        List<Alumno> deudores = new ArrayList<>();
-        List<Alumno> todos = obtenerTodosAlumnos();
-        
-        for (Alumno alumno : todos) {
-            
-            
-            
-            
-            
-            
-            
-        }
+   
         
         
         
         
-        
-        return deudores;
-        
-    }
+   
 
 }
